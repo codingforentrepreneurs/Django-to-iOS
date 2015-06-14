@@ -3,8 +3,8 @@ An overview of what we will be covering in this course.
 
 
 1. Create an iOS App using Swift and Django:
-	- Swift version 1.2
-	- Django version 1.8
+	- Swift version 1.2 for iOS 8
+	- Django version 1.8 with Python 2.7 (or 3.4)
 	- Django to iOS [Getting Started Guide](https://github.com/codingforentrepreneurs/Django-to-iOS/blob/master/Guides/Getting_Started.md)
 
 2. Use a Django-based RESTful API :
