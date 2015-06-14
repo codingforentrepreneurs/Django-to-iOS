@@ -1,8 +1,8 @@
 #Django to iOS || Getting Started Guide
 
 1. System requirements
-	- Mac OS X 
-	- Xcode version 6+
+	- [Mac OS X](http://www.apple.com/osx/)
+	- [Xcode](https://developer.apple.com/xcode/) version 6+
 	- Carthage Installed. [Installation Guide](https://github.com/codingforentrepreneurs/Guides/blob/master/install_carthage.md)
 	- Django & Virtualenv Installed.
 		- CFE [Video Tutorial](http://joincfe.com/projects/#setup)
