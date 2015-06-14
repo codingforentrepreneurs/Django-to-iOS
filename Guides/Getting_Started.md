@@ -79,18 +79,100 @@
 
 
 
-4. Download a pre-created RESTful API Django Project:
-	In this step, we download and install the "Srvup Rest Framework" project on github as our Django Starting point. This is a rather large project so if you want to learn how to build (1) the Django project or (2) The Django Rest Framework portion of the Django Project, please visit:
+4. Download a RESTful API Django Project:
+	In this step, we download and install the "Srvup Rest Framework" project on github as our Django Starting point. 
 
-	1. Clone the Srvup Rest Framework project: https://github.com/codingforentrepreneurs/srvup-rest-framework 
+	This is a large project so if you want to learn how to build all parts visit the following:
+		- Srvup Membership: A Django Project ([Tutorial](https://joincfe.com/projects/srvup-membership/) | [Code](https://github.com/codingforentrepreneurs/srvup-membership))
+		- Srvup Rest Framework: A Django Rest Framework Course ([Tutorial](https://joincfe.com/projects/django-rest-framework/) | [Code](https://github.com/codingforentrepreneurs/srvup-rest-framework))
 
-		Note: Don't know how to use git? You can just "Download Zip" instead.
-	2. Coming Soon.
+	To download, you have 3 options:
+	1. Add the Srvup Rest Framework project as a submodule to your project:
+	```
+	git submodule add https://github.com/codingforentrepreneurs/srvup-rest-framework 
+	```	
+	2. Clone the Srvup Rest Framework anywhere on your computer:
+	```
+	git clone https://github.com/codingforentrepreneurs/srvup-rest-framework 
+	```	
+	3. Download as a zip: [https://github.com/codingforentrepreneurs/srvup-membership/archive/master.zip](https://github.com/codingforentrepreneurs/srvup-membership/archive/master.zip)
+
+
+5. Create a virtualenv & install requirements within your 'srvup-rest-framework' project:
+	Assuming you downloaded/stored it on the desktop, you'd do the following:
+	``` 
+	$ cd desktop
+	$ cd srvup-rest-framework
+	$ virtualenv .
+	$ source bin/activate
+	(srvup-rest-framework)$
+
+	(srvup-rest-framework)$ ls
+	LICENSE			lib			srvup.sublime-workspace
+	README.md		requirements.txt	static
+	bin				src
+	include			srvup.sublime-project
+
+	(srvup-rest-framework)$ pip install -r requirements.txt
+	```
+	
+	Don't have virtualenv installed? Choose one of these:
+		- CFE [Video Tutorial](http://joincfe.com/projects/#setup)
+		- CFE Github [Installation Guide](https://github.com/codingforentrepreneurs/Guides/blob/master/install_django_mac_linux.md)
+
+	Don't have git installed? Install via Heroku Toolbelt - [http://toolbelt.heroku.com](http://toolbelt.heroku.com).
+
+	* Note, if you ever notice the srvup-rest-framework is running poorly, try to update the submodule with: `git submodule update --remote --merge`
 
 
 
 
+6. Create new Superuser & Run Django App:
+	```
+	(srvup-rest-framework)$ cd src
 
+	(srvup-rest-framework)$ ls
+	accounts		db_blank.sqlite3	notifications
+	analytics		db_github.sqlite3	srvup
+	billing			jquery_test		templates
+	comments		manage.py		videos
+
+	(srvup-rest-framework)$ python manage.py createsuperuser
+	Username: anythingelse
+	Email: anything@gmail.com
+	Password: 123
+	Password (again): 123
+	Customer created with id = XXXXXXXX
+	Superuser created successfully.
+
+	(srvup-rest-framework)$ python manage.py makemigrations
+	No changes detected
+
+	(srvup-rest-framework)$ python manage.py migrate
+	Operations to perform:
+  		Synchronize unmigrated apps: staticfiles, corsheaders, messages, crispy_forms, rest_framework
+  		Apply all migrations: videos, billing, notifications, admin, sessions, auth, analytics, contenttypes, accounts, comments
+	Synchronizing apps without migrations:
+  		Creating tables...
+    		Running deferred SQL...
+  		Installing custom SQL...
+	Running migrations:
+  		No migrations to apply.
+
+
+	(srvup-rest-framework)$ python manage.py runserver
+
+	Performing system checks...
+
+	System check identified no issues (0 silenced).
+	July 01, 2015 - 10:10:10
+	Django version 1.8.2, using settings 'srvup.settings'
+	Starting development server at http://127.0.0.1:8000/
+	Quit the server with CONTROL-C.
+
+	```
+
+	Did it all work? If so, you're ready to go. If not, you might have to try installing again. Ensure each step is accurate.
 
 
 
