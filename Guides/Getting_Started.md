@@ -1,6 +1,6 @@
 #Django to iOS || Getting Started Guide
 
-1. System requirements
+## System requirements
 	- [Mac OS X](http://www.apple.com/osx/)
 	- [Xcode](https://developer.apple.com/xcode/) version 6+
 	- Carthage Installed. [Installation Guide](https://github.com/codingforentrepreneurs/Guides/blob/master/install_carthage.md)
@@ -11,7 +11,8 @@
 
 
 
-2. Create a new iOS Project:
+### iOS
+1. Create a new iOS Project:
 	1. Open `Xcode` > `File` > `New Project`
 	2. Select iOS Project template `Single View Application`, click `Next`
 	3. Fill in the following:
@@ -29,7 +30,7 @@
 
 
 
-3. Install `Alamofire`, `KeychainAccess`, and `SwiftyJSON`: 
+2. Install `Alamofire`, `KeychainAccess`, and `SwiftyJSON`: 
 	
 	Using Carthage, we're going to install these frameworks for our project. This is not the only way to install these frameworks but Carthage makes our life easy. Let's get started:
 		
@@ -79,7 +80,9 @@
 
 
 
-4. Download a RESTful API Django Project:
+
+### Django
+1. Download a RESTful API Django Project:
 	In this step, we download and install the "Srvup Rest Framework" project on github as our Django Starting point. 
 
 	This is a large project so if you want to learn how to build all parts visit the following:
@@ -98,7 +101,7 @@
 	3. Download as a zip: [https://github.com/codingforentrepreneurs/srvup-membership/archive/master.zip](https://github.com/codingforentrepreneurs/srvup-membership/archive/master.zip)
 
 
-5. Create a virtualenv & install requirements within your 'srvup-rest-framework' project:
+2. Create a virtualenv & install requirements within your 'srvup-rest-framework' project:
 	Assuming you downloaded/stored it on the desktop, you'd do the following:
 	``` 
 	$ cd desktop
@@ -127,7 +130,7 @@
 
 
 
-6. Create new Superuser & Run Django App:
+3. Create new Superuser & Run Django App:
 	```
 	(srvup-rest-framework)$ cd src
 
