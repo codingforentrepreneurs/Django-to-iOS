@@ -16,7 +16,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        var rTest = Alamofire.request(Method.GET, "http://codingforentrepreneurs.com")
+        var rTest = Alamofire.request(Method.GET, "http://127.0.0.1:8000/api2/projects/?format=json")
         rTest.responseJSON(options: nil, completionHandler: isComplete)
     }
     
