@@ -1,14 +1,14 @@
-#Django to iOS Project Topics
+#Django to iOS || Project Topics
 An overview of what we will be covering in this course.
 
 
 1. Create an iOS App using Swift and Django:
 	- Swift version 1.2
 	- Django version 1.8
-	- [Django to iOS Getting Started Guide](https://github.com/codingforentrepreneurs/Django-to-iOS/blob/master/Guides/Getting_Started.md)
+	- Django to iOS [Getting Started Guide](https://github.com/codingforentrepreneurs/Django-to-iOS/blob/master/Guides/Getting_Started.md)
 
 2. Use a Django-based RESTful API :
- 	- Srvup Rest Framework ([code](https://github.com/codingforentrepreneurs/srvup-rest-framework)): A [tutorial](https://joincfe.com/projects/django-rest-framework/) on the Django Rest Framework).
+ 	- Srvup Rest Framework ([code](https://github.com/codingforentrepreneurs/srvup-rest-framework)): A [tutorial](https://joincfe.com/projects/django-rest-framework/) on the Django Rest Framework.
 
 3. Integrating the following Swift Frameworks/Packages: 
 	- [Alamofire](https://github.com/Alamofire/Alamofire): "Elegant HTTP Networking in Swift"

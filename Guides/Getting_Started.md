@@ -1,4 +1,4 @@
-#Django to iOS Getting Started Guide
+#Django to iOS || Getting Started Guide
 
 1. System requirements
 	- Mac OS X 
