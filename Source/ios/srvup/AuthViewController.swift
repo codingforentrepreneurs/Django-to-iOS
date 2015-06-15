@@ -165,8 +165,27 @@ class AuthViewController: UIViewController, UITextFieldDelegate {
     func projectsReceived(request:NSURLRequest, response:NSHTTPURLResponse?, data:AnyObject?, error:NSError?) -> Void {
         
         let statusCode = response!.statusCode
-        println(statusCode)
-        println(data)
+        // println(statusCode)
+        
+        switch statusCode {
+        
+        case 200...299:
+//            let jsonData = JSON(data!)
+//            let results = jsonData["results"]
+//            println(results)
+            var project = Project(title: "sometitle", url: "http://joincfe.com", id: 12)
+            println(project.title)
+            println(project)
+        case 400...299:
+            self.messageText.text = "Error..."
+        
+        case 500...299:
+            self.messageText.text = "Server Error..."
+            
+        default:
+            println("No projects")
+        }
+        
         self.messageText.text = "Loaded..."
         self.performSegueWithIdentifier("showProjects", sender: self)
         

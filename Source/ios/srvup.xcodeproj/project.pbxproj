@@ -18,6 +18,7 @@
 		0F0E02251B2DF5EE00D35686 /* KeychainAccess.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F0E02221B2DF5EE00D35686 /* KeychainAccess.framework */; };
 		0F0E02291B2F1A2000D35686 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F0E02281B2F1A2000D35686 /* ViewController.swift */; };
 		0F0E022B1B2F3B9200D35686 /* ProjectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F0E022A1B2F3B9200D35686 /* ProjectViewController.swift */; };
+		0F0E022D1B2F3CDA00D35686 /* Project.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F0E022C1B2F3CDA00D35686 /* Project.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -46,6 +47,7 @@
 		0F0E02221B2DF5EE00D35686 /* KeychainAccess.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = KeychainAccess.framework; path = Carthage/Build/iOS/KeychainAccess.framework; sourceTree = "<group>"; };
 		0F0E02281B2F1A2000D35686 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		0F0E022A1B2F3B9200D35686 /* ProjectViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectViewController.swift; sourceTree = "<group>"; };
+		0F0E022C1B2F3CDA00D35686 /* Project.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Project.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,6 +101,7 @@
 				0F0E02071B2DF3B500D35686 /* Images.xcassets */,
 				0F0E02091B2DF3B500D35686 /* LaunchScreen.xib */,
 				0F0E01FE1B2DF3B500D35686 /* Supporting Files */,
+				0F0E022C1B2F3CDA00D35686 /* Project.swift */,
 			);
 			path = srvup;
 			sourceTree = "<group>";
@@ -261,6 +264,7 @@
 				0F0E022B1B2F3B9200D35686 /* ProjectViewController.swift in Sources */,
 				0F0E02291B2F1A2000D35686 /* ViewController.swift in Sources */,
 				0F0E02031B2DF3B500D35686 /* AuthViewController.swift in Sources */,
+				0F0E022D1B2F3CDA00D35686 /* Project.swift in Sources */,
 				0F0E02011B2DF3B500D35686 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
