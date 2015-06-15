@@ -194,6 +194,13 @@ class AuthViewController: UIViewController, UITextFieldDelegate {
         
         
     }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "showProjects" {
+            let vc = segue.destinationViewController as! ProjectViewController
+            vc.projects = self.projects
+        }
+    }
 
 }
 

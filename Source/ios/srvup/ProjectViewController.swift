@@ -9,14 +9,21 @@
 import UIKit
 
 class ProjectViewController: UIViewController {
+    var projects = [Project]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         let titleText = UILabel(frame: CGRectMake(0, 0, self.view.frame.width, 100))
-        titleText.text = "Projects"
+        titleText.text = "Projects - \(self.projects.count)"
         titleText.textAlignment = NSTextAlignment.Center
         
         self.view.addSubview(titleText)
+        
+        if self.projects.count > 0 {
+            for i in projects {
+                println(i.title)
+            }
+        }
 
         // Do any additional setup after loading the view.
     }
