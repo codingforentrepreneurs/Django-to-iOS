@@ -20,6 +20,7 @@ class AuthViewController: UIViewController, UITextFieldDelegate {
     let usernameField = UITextField()
     let passwordField = UITextField()
     let submitBtn = UIButton.buttonWithType(.System) as! UIButton
+    var projects = [Project]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -170,12 +171,15 @@ class AuthViewController: UIViewController, UITextFieldDelegate {
         switch statusCode {
         
         case 200...299:
-//            let jsonData = JSON(data!)
-//            let results = jsonData["results"]
-//            println(results)
-            var project = Project(title: "sometitle", url: "http://joincfe.com", id: 12)
-            println(project.title)
-            println(project)
+            let jsonData = JSON(data!)
+            let results = jsonData["results"]
+            for (index:String, subJSON:JSON) in results {
+                let project = Project(title: subJSON["title"].string!, url: subJSON["url"].string!, id: subJSON["id"].int!)
+                self.projects.append(project)
+            }
+            println(self.projects)
+            println(self.projects.count)
+            self.performSegueWithIdentifier("showProjects", sender: self)
         case 400...299:
             self.messageText.text = "Error..."
         
@@ -187,7 +191,7 @@ class AuthViewController: UIViewController, UITextFieldDelegate {
         }
         
         self.messageText.text = "Loaded..."
-        self.performSegueWithIdentifier("showProjects", sender: self)
+        
         
     }
 
