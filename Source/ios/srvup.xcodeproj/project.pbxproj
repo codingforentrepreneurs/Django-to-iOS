@@ -17,6 +17,7 @@
 		0F0E02241B2DF5EE00D35686 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F0E02211B2DF5EE00D35686 /* Alamofire.framework */; };
 		0F0E02251B2DF5EE00D35686 /* KeychainAccess.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F0E02221B2DF5EE00D35686 /* KeychainAccess.framework */; };
 		0F0E02291B2F1A2000D35686 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F0E02281B2F1A2000D35686 /* ViewController.swift */; };
+		0F0E022B1B2F3B9200D35686 /* ProjectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F0E022A1B2F3B9200D35686 /* ProjectViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +45,7 @@
 		0F0E02211B2DF5EE00D35686 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
 		0F0E02221B2DF5EE00D35686 /* KeychainAccess.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = KeychainAccess.framework; path = Carthage/Build/iOS/KeychainAccess.framework; sourceTree = "<group>"; };
 		0F0E02281B2F1A2000D35686 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		0F0E022A1B2F3B9200D35686 /* ProjectViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -91,6 +93,7 @@
 			children = (
 				0F0E02001B2DF3B500D35686 /* AppDelegate.swift */,
 				0F0E02021B2DF3B500D35686 /* AuthViewController.swift */,
+				0F0E022A1B2F3B9200D35686 /* ProjectViewController.swift */,
 				0F0E02281B2F1A2000D35686 /* ViewController.swift */,
 				0F0E02041B2DF3B500D35686 /* Main.storyboard */,
 				0F0E02071B2DF3B500D35686 /* Images.xcassets */,
@@ -255,6 +258,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0F0E022B1B2F3B9200D35686 /* ProjectViewController.swift in Sources */,
 				0F0E02291B2F1A2000D35686 /* ViewController.swift in Sources */,
 				0F0E02031B2DF3B500D35686 /* AuthViewController.swift in Sources */,
 				0F0E02011B2DF3B500D35686 /* AppDelegate.swift in Sources */,

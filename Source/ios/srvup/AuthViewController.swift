@@ -168,7 +168,7 @@ class AuthViewController: UIViewController, UITextFieldDelegate {
         println(statusCode)
         println(data)
         self.messageText.text = "Loaded..."
-        
+        self.performSegueWithIdentifier("showProjects", sender: self)
         
     }
 
