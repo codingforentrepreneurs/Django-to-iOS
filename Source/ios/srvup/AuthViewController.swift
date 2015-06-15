@@ -45,6 +45,7 @@ class AuthViewController: UIViewController {
         
         self.passwordField.frame = CGRectMake(offset, 150, width, height)
         self.passwordField.placeholder = "Password"
+        self.passwordField.secureTextEntry = true
         
         self.submitBtn.frame = CGRectMake(offset, 200, width, height)
         self.submitBtn.setTitle("Submit", forState: .Normal)
@@ -55,11 +56,30 @@ class AuthViewController: UIViewController {
         self.view.addSubview(self.passwordField)
         self.view.addSubview(self.submitBtn)
     }
+    
+    func validateLoginForm() -> Bool {
+        let unCount = count(self.usernameField.text)
+        let pwCount = count(self.passwordField.text)
+        if (unCount > 0) && (pwCount > 0) {
+            return true
+        } else if unCount == 0 {
+            self.messageText.text = "Username is required"
+            return false
+        } else if pwCount == 0 {
+            self.messageText.text = "Password is required"
+            return false
+        } else {
+            self.messageText.text = "Username and Password are required."
+            return false
+        }
+    }
 
     
     func doLogin(sender: AnyObject) {
         self.messageText.text = "Loading"
-        self.doAuth(self.usernameField.text, password: self.passwordField.text)
+        if self.validateLoginForm() {
+            self.doAuth(self.usernameField.text, password: self.passwordField.text)
+        }
     }
     
     func doAuth(username:String, password:String) {
