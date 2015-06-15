@@ -12,19 +12,22 @@ import SwiftyJSON
 import KeychainAccess
 
 class ViewController: UIViewController {
+    let authTokenUrl = "http://127.0.0.1:8000/api/auth/token/"
 
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        var rTest = Alamofire.request(Method.GET, "http://127.0.0.1:8000/api2/projects/?format=json")
+        let params = ["username": "jmitchel3", "password": 123]
+        var rTest = Alamofire.request(Method.POST, self.authTokenUrl, parameters: params)
+        
         rTest.responseJSON(options: nil, completionHandler: isComplete)
     }
     
     func isComplete(request:NSURLRequest, response:NSHTTPURLResponse?, data:AnyObject?, error:NSError?) -> Void {
         println(response!.statusCode)
         println(data)
-        println(error)
-        println(request)
+        // println(error)
+        // println(request)
         
     }
 
