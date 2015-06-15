@@ -13,7 +13,7 @@ import KeychainAccess
 
 class ViewController: UIViewController {
     let authTokenUrl = "http://127.0.0.1:8000/api/auth/token/"
-
+    let keychain = Keychain(service: "com.codingforentrepreneurs.srvup")
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -32,10 +32,19 @@ class ViewController: UIViewController {
         switch statusCode {
         case 200...299:
             // success: use the data
-            // println(data!)
             let jsonData = JSON(data!)
-            let token = jsonData["token"].string!
-            println(token)
+            let token = jsonData["token"].string
+            let user = jsonData["user"].string!
+            let active = jsonData["active"].bool!
+            if active {
+                self.keychain["token"] = token
+                self.keychain["user"] = user
+            } else {
+                self.keychain["token"] = nil
+            }
+            
+            // println(self.keychain["token"])
+            
         case 400...499:
             println("Server responded no")
         case 500...599:
@@ -43,8 +52,6 @@ class ViewController: UIViewController {
         default:
             println("There was an error with your request")
         }
-        // println(error)
-        // println(request)
         
     }
 
