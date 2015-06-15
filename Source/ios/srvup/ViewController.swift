@@ -24,8 +24,21 @@ class ViewController: UIViewController {
     }
     
     func isComplete(request:NSURLRequest, response:NSHTTPURLResponse?, data:AnyObject?, error:NSError?) -> Void {
-        println(response!.statusCode)
-        println(data)
+        if error != nil {
+            println(error!)
+        }
+        let statusCode = response!.statusCode
+        
+        switch statusCode {
+        case 200...299:
+            println(data!)
+        case 400...499:
+            println("Server responded no")
+        case 500...599:
+            println("Server Error")
+        default:
+            println("There was an error with your request")
+        }
         // println(error)
         // println(request)
         
