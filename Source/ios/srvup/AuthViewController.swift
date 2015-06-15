@@ -11,7 +11,7 @@ import Alamofire
 import SwiftyJSON
 import KeychainAccess
 
-class AuthViewController: UIViewController {
+class AuthViewController: UIViewController, UITextFieldDelegate {
     let authTokenUrl = "http://127.0.0.1:8000/api/auth/token/"
     let projectsURL = "http://127.0.0.1:8000/api2/projects/?format=json"
     let keychain = Keychain(service: "com.codingforentrepreneurs.srvup")
@@ -33,6 +33,7 @@ class AuthViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    
     func addLoginForm() {
         let offset = CGFloat(20)
         let width = self.view.frame.width - CGFloat(2 * offset)
@@ -42,10 +43,16 @@ class AuthViewController: UIViewController {
         
         self.usernameField.frame = CGRectMake(offset, 100, width, height)
         self.usernameField.placeholder = "Username"
+        self.usernameField.returnKeyType = UIReturnKeyType.Next
+        self.usernameField.delegate = self
+        if count(self.usernameField.text) == 0 {
+             self.usernameField.becomeFirstResponder()
+        }
         
         self.passwordField.frame = CGRectMake(offset, 150, width, height)
         self.passwordField.placeholder = "Password"
         self.passwordField.secureTextEntry = true
+        self.passwordField.delegate = self
         
         self.submitBtn.frame = CGRectMake(offset, 200, width, height)
         self.submitBtn.setTitle("Submit", forState: .Normal)
@@ -57,6 +64,17 @@ class AuthViewController: UIViewController {
         self.view.addSubview(self.submitBtn)
     }
     
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        if (textField == self.usernameField) {
+            self.passwordField.becomeFirstResponder()
+        } else if (textField == self.passwordField) {
+            self.doLogin(self.submitBtn)
+        } else {
+            
+        }
+        return true
+    }
+    
     func validateLoginForm() -> Bool {
         let unCount = count(self.usernameField.text)
         let pwCount = count(self.passwordField.text)
@@ -64,12 +82,15 @@ class AuthViewController: UIViewController {
             return true
         } else if unCount == 0 {
             self.messageText.text = "Username is required"
+            self.usernameField.becomeFirstResponder()
             return false
         } else if pwCount == 0 {
             self.messageText.text = "Password is required"
+            self.passwordField.becomeFirstResponder()
             return false
         } else {
             self.messageText.text = "Username and Password are required."
+            self.usernameField.becomeFirstResponder()
             return false
         }
     }
@@ -147,6 +168,7 @@ class AuthViewController: UIViewController {
         println(statusCode)
         println(data)
         self.messageText.text = "Loaded..."
+        
         
     }
 
