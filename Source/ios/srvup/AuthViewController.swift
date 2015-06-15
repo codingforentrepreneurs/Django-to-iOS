@@ -16,20 +16,51 @@ class AuthViewController: UIViewController {
     let projectsURL = "http://127.0.0.1:8000/api2/projects/?format=json"
     let keychain = Keychain(service: "com.codingforentrepreneurs.srvup")
     
+    let messageText = UITextView()
+    let usernameField = UITextField()
+    let passwordField = UITextField()
+    let submitBtn = UIButton.buttonWithType(.System) as! UIButton
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
-        let username = "jmitchel3"
-        let password = "\(123)"
-        self.doAuth(username, password: password)
-
+    
+        self.addLoginForm()
     }
     
+
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    func addLoginForm() {
+        let offset = CGFloat(20)
+        let width = self.view.frame.width - CGFloat(2 * offset)
+        let height = CGFloat(50)
+        self.messageText.frame = CGRectMake(offset, 50, width, height)
+        self.messageText.text = ""
+        
+        self.usernameField.frame = CGRectMake(offset, 100, width, height)
+        self.usernameField.placeholder = "Username"
+        
+        self.passwordField.frame = CGRectMake(offset, 150, width, height)
+        self.passwordField.placeholder = "Password"
+        
+        self.submitBtn.frame = CGRectMake(offset, 200, width, height)
+        self.submitBtn.setTitle("Submit", forState: .Normal)
+        self.submitBtn.addTarget(self, action: "doLogin:", forControlEvents: UIControlEvents.TouchUpInside)
+        
+        self.view.addSubview(self.messageText)
+        self.view.addSubview(self.usernameField)
+        self.view.addSubview(self.passwordField)
+        self.view.addSubview(self.submitBtn)
+    }
 
+    
+    func doLogin(sender: AnyObject) {
+        self.messageText.text = "Loading"
+        self.doAuth(self.usernameField.text, password: self.passwordField.text)
+    }
     
     func doAuth(username:String, password:String) {
         let params = ["username": username, "password": password]
@@ -48,6 +79,7 @@ class AuthViewController: UIViewController {
         switch statusCode {
         case 200...299:
             // success: use the data
+            self.messageText.text = "Auth success!"
             let jsonData = JSON(data!)
             let token = jsonData["token"].string
             let user = jsonData["user"].string!
@@ -71,6 +103,7 @@ class AuthViewController: UIViewController {
     }
     
     func getProjects(){
+        self.messageText.text = "Getting..."
         let token = self.keychain["token"]
         if token != nil {
             let url = NSURL(string: self.projectsURL)
@@ -93,6 +126,7 @@ class AuthViewController: UIViewController {
         let statusCode = response!.statusCode
         println(statusCode)
         println(data)
+        self.messageText.text = "Loaded..."
         
     }
 
