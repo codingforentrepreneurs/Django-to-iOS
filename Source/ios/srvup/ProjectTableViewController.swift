@@ -17,9 +17,10 @@ class ProjectTableViewController: UITableViewController {
         
         if self.projects.count > 0 {
             for i in projects {
-                println(i.title)
-                println(i.videoSet)
-                println(i.imageUrlString)
+                println("")
+//                println(i.title)
+//                println(i.videoSet)
+                println(i.lectureSet)
             }
         }
         

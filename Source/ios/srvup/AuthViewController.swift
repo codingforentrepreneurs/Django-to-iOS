@@ -178,14 +178,16 @@ class AuthViewController: UIViewController, UITextFieldDelegate {
                 
                 if subJSON["video_set"].array != nil {
                     project.videoSet = subJSON["video_set"].array!
+                    project.createLectures()
+                    // println(project.lectureSet)
                 }
                 if subJSON["image"] != nil {
                     project.imageUrlString = subJSON["image"].string!
                 }
                 self.projects.append(project)
             }
-            println(self.projects)
-            println(self.projects.count)
+            // println(self.projects)
+            // println(self.projects.count)
             self.performSegueWithIdentifier("showProjects", sender: self)
         case 400...299:
             self.messageText.text = "Error..."
