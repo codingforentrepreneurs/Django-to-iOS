@@ -8,7 +8,7 @@
 
 import UIKit
 
-class LectureListTableViewController: UITableViewController {
+class LectureListTableViewController: UITableViewController, UIAlertViewDelegate {
     var project: Project?
     var lectures = [Lecture]()
 
@@ -20,13 +20,19 @@ class LectureListTableViewController: UITableViewController {
         }
         
         if self.lectures.count == 0 {
-            println("no lectures")
+            let alertVew = UIAlertView(title: "Sorry, not currently available", message: "Press okay to continue", delegate: self, cancelButtonTitle: "Okay")
+            alertVew.show()
+            
         }
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+    }
+    
+    func alertView(alertView: UIAlertView, didDismissWithButtonIndex buttonIndex: Int) {
+        self.dismissViewControllerAnimated(true, completion: nil)
     }
 
     override func didReceiveMemoryWarning() {
