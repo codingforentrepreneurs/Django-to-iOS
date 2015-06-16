@@ -177,9 +177,7 @@ class AuthViewController: UIViewController, UITextFieldDelegate {
                 let project = Project(title: subJSON["title"].string!, url: subJSON["url"].string!, id: subJSON["id"].int!)
                 
                 if subJSON["video_set"].array != nil {
-                    project.videoSet = subJSON["video_set"].array!
-                    project.createLectures()
-                    // println(project.lectureSet)
+                    project.createLectures(subJSON["video_set"].array!)
                 }
                 if subJSON["image"] != nil {
                     project.imageUrlString = subJSON["image"].string!

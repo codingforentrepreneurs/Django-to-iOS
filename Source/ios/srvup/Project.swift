@@ -16,7 +16,7 @@ class Project:NSObject {
     var slug:String?
     var projectDescription: String?
     var imageUrlString: String?
-    var videoSet = [JSON]()
+    // var videoSet = [JSON]()
     var lectureSet = [Lecture]()
     
     init(title:String, url:String, id:Int) {
@@ -25,11 +25,19 @@ class Project:NSObject {
         self.id = id
     }
     
-    func createLectures() {
-        if self.lectureSet.count == 0 && self.videoSet.count > 0 {
-            for i in self.videoSet {
-                // println(i)
+    func createLectures(theArray:[JSON]) {
+        if self.lectureSet.count == 0 && theArray.count > 0 {
+            for i in theArray {
                 var lecture = Lecture(title: i["title"].string!, url: i["url"].string!, id: i["id"].int!, slug: i["slug"].string!, order: i["order"].int!, embedCode: i["embed_code"].string!)
+                
+                lecture.shareMessage = i["share_message"].string
+                lecture.timestamp = i["timestamp"].string
+                if i["comment_set"].array != nil {
+                    lecture.commentSet = i["comment_set"].array!
+                }
+                if i["free_preview"].bool != nil {
+                    lecture.freePreview = i["free_preview"].bool!
+                }
                 self.lectureSet.append(lecture)
             }
         }
