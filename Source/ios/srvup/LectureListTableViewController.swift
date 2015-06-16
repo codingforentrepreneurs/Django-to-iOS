@@ -11,9 +11,31 @@ import UIKit
 class LectureListTableViewController: UITableViewController, UIAlertViewDelegate {
     var project: Project?
     var lectures = [Lecture]()
+    var headerView = UIView()
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.headerView.frame = CGRectMake(0, 0, self.view.frame.width, 150)
+        self.headerView.backgroundColor = .blackColor()
+        
+        let projectImage = self.project!.image()
+        if projectImage != nil {
+            let imageView = UIImageView(image: projectImage!)
+            imageView.frame = self.headerView.frame
+            imageView.contentMode = UIViewContentMode.ScaleAspectFit
+            self.headerView.addSubview(imageView)
+        } else {
+            let label = UILabel(frame: self.headerView.frame)
+            label.text = self.project?.title
+            label.textColor = .whiteColor()
+            label.textAlignment = NSTextAlignment.Center
+            self.headerView.addSubview(label)
+        }
+    
+
+        self.tableView.tableHeaderView = self.headerView
+        
         
         if self.project != nil {
             self.lectures = self.project!.lectureSet

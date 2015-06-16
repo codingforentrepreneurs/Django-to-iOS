@@ -6,6 +6,7 @@
 //  Copyright (c) 2015 Coding for Entrepreneurs. All rights reserved.
 //
 
+import UIKit
 import Foundation
 import SwiftyJSON
 
@@ -23,6 +24,17 @@ class Project:NSObject {
         self.title = title
         self.url = url
         self.id = id
+    }
+    
+    func image() -> UIImage? {
+        if self.imageUrlString != nil {
+            let url = NSURL(string: self.imageUrlString!)!
+            let imageData = NSData(contentsOfURL: url)!
+            let image = UIImage(data: imageData)
+            return image
+        }
+        
+        return nil
     }
     
     func createLectures(theArray:[JSON]) {
