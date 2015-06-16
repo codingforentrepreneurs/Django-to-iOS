@@ -8,8 +8,9 @@
 
 import UIKit
 
-class ProjectViewController: UIViewController {
+class ProjectViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     var projects = [Project]()
+    let tableView = UITableView()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,10 +25,31 @@ class ProjectViewController: UIViewController {
                 println(i.title)
             }
         }
+        
+        self.tableView.frame = CGRectMake(0, self.view.frame.height/4.0, self.view.frame.width, self.view.frame.height * 3/4.0)
+        self.tableView.delegate = self
+        self.tableView.dataSource = self
+        self.view.addSubview(self.tableView)
 
         // Do any additional setup after loading the view.
     }
-
+    
+    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        return 1
+    }
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let cell = UITableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: "cell")
+        
+        cell.textLabel?.text = "\(indexPath.row + 1) - \(self.projects[indexPath.row].title)"
+        return cell
+    }
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return self.projects.count
+    }
+    
+    // numberOfRowsInSection
+    
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

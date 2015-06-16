@@ -19,6 +19,7 @@
 		0F0E02291B2F1A2000D35686 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F0E02281B2F1A2000D35686 /* ViewController.swift */; };
 		0F0E022B1B2F3B9200D35686 /* ProjectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F0E022A1B2F3B9200D35686 /* ProjectViewController.swift */; };
 		0F0E022D1B2F3CDA00D35686 /* Project.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F0E022C1B2F3CDA00D35686 /* Project.swift */; };
+		0F584BD21B305F1F00C1FD47 /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F584BD11B305F1F00C1FD47 /* TableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,6 +49,7 @@
 		0F0E02281B2F1A2000D35686 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		0F0E022A1B2F3B9200D35686 /* ProjectViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectViewController.swift; sourceTree = "<group>"; };
 		0F0E022C1B2F3CDA00D35686 /* Project.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Project.swift; sourceTree = "<group>"; };
+		0F584BD11B305F1F00C1FD47 /* TableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TableViewController.swift; path = srvup/TableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,6 +76,7 @@
 		0F0E01F21B2DF3B500D35686 = {
 			isa = PBXGroup;
 			children = (
+				0F584BD11B305F1F00C1FD47 /* TableViewController.swift */,
 				0F0E01FD1B2DF3B500D35686 /* srvup */,
 				0F0E02131B2DF3B500D35686 /* srvupTests */,
 				0F0E01FC1B2DF3B500D35686 /* Products */,
@@ -262,6 +265,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0F0E022B1B2F3B9200D35686 /* ProjectViewController.swift in Sources */,
+				0F584BD21B305F1F00C1FD47 /* TableViewController.swift in Sources */,
 				0F0E02291B2F1A2000D35686 /* ViewController.swift in Sources */,
 				0F0E02031B2DF3B500D35686 /* AuthViewController.swift in Sources */,
 				0F0E022D1B2F3CDA00D35686 /* Project.swift in Sources */,
