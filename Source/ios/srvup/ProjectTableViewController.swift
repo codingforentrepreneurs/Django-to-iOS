@@ -15,6 +15,8 @@ class ProjectTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.view.backgroundColor = .blackColor()
+        self.tableView.separatorStyle = UITableViewCellSeparatorStyle.None
         if self.projects.count > 0 {
             for i in projects {
                 println("")
@@ -53,10 +55,19 @@ class ProjectTableViewController: UITableViewController {
 
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as! UITableViewCell
-
+        let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as! ProjectTableCell
+        let project = self.projects[indexPath.row]
         // Configure the cell...
-        cell.textLabel?.text = "\(indexPath.row + 1) - \(self.projects[indexPath.row].title)"
+        // cell.textLabel?.text = "\(indexPath.row + 1) - \(self.projects[indexPath.row].title)"
+        if project.imageUrlString != nil {
+            let imageUrl = NSURL(string: project.imageUrlString!)
+            let data = NSData(contentsOfURL: imageUrl!)
+            let image = UIImage(data: data!)
+            // let imageView = UIimageView()
+            cell.projectImage.image = image
+        }
+        cell.backgroundColor = self.view.backgroundColor
+        cell.projectLabel.text = "\(project.title)"
         return cell
     }
 

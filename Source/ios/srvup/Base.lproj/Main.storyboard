@@ -28,16 +28,46 @@
         <scene sceneID="gWq-y3-6M4">
             <objects>
                 <tableViewController id="WrN-eC-bhv" customClass="ProjectTableViewController" customModule="srvup" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="50" sectionHeaderHeight="22" sectionFooterHeight="22" id="6cn-pa-B5g">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="150" sectionHeaderHeight="22" sectionFooterHeight="22" id="6cn-pa-B5g">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" rowHeight="50" id="b8w-Vm-Qe7">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" rowHeight="150" id="b8w-Vm-Qe7" customClass="ProjectTableCell" customModule="srvup" customModuleProvider="target">
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="b8w-Vm-Qe7" id="zRP-s6-cK2">
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="wQf-FX-i9v">
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="149.5"/>
+                                        </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" alpha="0.74999999999999978" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mwc-tc-p0F">
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="149.5"/>
+                                            <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="Mwc-tc-p0F" firstAttribute="top" secondItem="zRP-s6-cK2" secondAttribute="top" id="17V-KF-cSc"/>
+                                        <constraint firstAttribute="bottom" secondItem="wQf-FX-i9v" secondAttribute="bottom" id="2SQ-5w-hVO"/>
+                                        <constraint firstItem="Mwc-tc-p0F" firstAttribute="leading" secondItem="zRP-s6-cK2" secondAttribute="leading" id="6F0-7x-iwH"/>
+                                        <constraint firstAttribute="trailing" secondItem="Mwc-tc-p0F" secondAttribute="trailing" id="79o-8h-EaM"/>
+                                        <constraint firstItem="wQf-FX-i9v" firstAttribute="leading" secondItem="zRP-s6-cK2" secondAttribute="leading" id="8nP-dQ-0eL"/>
+                                        <constraint firstAttribute="trailing" secondItem="wQf-FX-i9v" secondAttribute="trailing" id="DkO-h5-1WX"/>
+                                        <constraint firstAttribute="centerY" secondItem="Mwc-tc-p0F" secondAttribute="centerY" id="NgU-fh-akN"/>
+                                        <constraint firstAttribute="centerX" secondItem="Mwc-tc-p0F" secondAttribute="centerX" id="Y41-wc-bF6"/>
+                                        <constraint firstAttribute="centerX" secondItem="wQf-FX-i9v" secondAttribute="centerX" id="kWa-tI-Cpb"/>
+                                        <constraint firstItem="wQf-FX-i9v" firstAttribute="top" secondItem="zRP-s6-cK2" secondAttribute="top" id="oa5-jf-DZD"/>
+                                        <constraint firstAttribute="bottom" secondItem="Mwc-tc-p0F" secondAttribute="bottom" id="v6y-z2-VC4"/>
+                                        <constraint firstAttribute="centerY" secondItem="wQf-FX-i9v" secondAttribute="centerY" id="xbP-9K-dxC"/>
+                                    </constraints>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="projectImage" destination="wQf-FX-i9v" id="dB2-6X-Unk"/>
+                                    <outlet property="projectLabel" destination="Mwc-tc-p0F" id="fmd-sj-RgJ"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
