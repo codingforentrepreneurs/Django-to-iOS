@@ -175,6 +175,13 @@ class AuthViewController: UIViewController, UITextFieldDelegate {
             let results = jsonData["results"]
             for (index:String, subJSON:JSON) in results {
                 let project = Project(title: subJSON["title"].string!, url: subJSON["url"].string!, id: subJSON["id"].int!)
+                
+                if subJSON["video_set"].array != nil {
+                    project.videoSet = subJSON["video_set"].array!
+                }
+                if subJSON["image"] != nil {
+                    project.imageUrlString = subJSON["image"].string!
+                }
                 self.projects.append(project)
             }
             println(self.projects)

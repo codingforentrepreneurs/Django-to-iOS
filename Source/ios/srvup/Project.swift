@@ -7,7 +7,7 @@
 //
 
 import Foundation
-
+import SwiftyJSON
 
 class Project:NSObject {
     var title:String
@@ -15,8 +15,8 @@ class Project:NSObject {
     var id:Int
     var slug:String?
     var projectDescription: String?
-    var imageUrl: String?
-    // var videoSet = Array?
+    var imageUrlString: String?
+    var videoSet = [JSON]()
     
     init(title:String, url:String, id:Int) {
         self.title = title

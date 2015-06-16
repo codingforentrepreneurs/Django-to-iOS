@@ -15,10 +15,11 @@ class ProjectTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
         if self.projects.count > 0 {
             for i in projects {
                 println(i.title)
+                println(i.videoSet)
+                println(i.imageUrlString)
             }
         }
         
