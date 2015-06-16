@@ -23,6 +23,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="1290" y="-779"/>
         </scene>
         <!--Project Table View Controller-->
         <scene sceneID="gWq-y3-6M4">
@@ -67,6 +68,7 @@
                                 <connections>
                                     <outlet property="projectImage" destination="wQf-FX-i9v" id="dB2-6X-Unk"/>
                                     <outlet property="projectLabel" destination="Mwc-tc-p0F" id="fmd-sj-RgJ"/>
+                                    <segue destination="uZ7-LA-qXC" kind="show" identifier="showLectureList" id="XcL-5v-Qw7"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -80,23 +82,31 @@
             </objects>
             <point key="canvasLocation" x="1984" y="-779"/>
         </scene>
-        <!--Project View Controller-->
-        <scene sceneID="4bE-9b-5x2">
+        <!--Lecture List Table View Controller-->
+        <scene sceneID="BKb-or-j0x">
             <objects>
-                <viewController id="dZ4-uE-ZL6" customClass="ProjectViewController" customModule="srvup" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="rwl-KM-fmO"/>
-                        <viewControllerLayoutGuide type="bottom" id="cc6-cT-MwF"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="EFK-a8-Aac">
+                <tableViewController id="uZ7-LA-qXC" customClass="LectureListTableViewController" customModule="srvup" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="Zdm-eg-wAd">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="cbR-lf-WZF" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" id="DO2-aj-3uT">
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="DO2-aj-3uT" id="82k-Ay-TIy">
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="uZ7-LA-qXC" id="l8c-rW-ElT"/>
+                            <outlet property="delegate" destination="uZ7-LA-qXC" id="HDg-Ek-Rl9"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Yoq-R9-EP7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1984" y="-56"/>
+            <point key="canvasLocation" x="2656" y="-779"/>
         </scene>
     </scenes>
 </document>

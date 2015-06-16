@@ -1,5 +1,5 @@
 //
-//  ProjectTableViewController.swift
+//  LectureListTableViewController.swift
 //  srvup
 //
 //  Created by Justin Mitchel on 6/16/15.
@@ -8,25 +8,20 @@
 
 import UIKit
 
-class ProjectTableViewController: UITableViewController {
-    var projects = [Project]()
-    
-    
+class LectureListTableViewController: UITableViewController {
+    var project: Project?
+    var lectures = [Lecture]()
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.view.backgroundColor = .blackColor()
-        self.tableView.separatorStyle = UITableViewCellSeparatorStyle.None
-        if self.projects.count > 0 {
-            for i in projects {
-                println("")
-//                println(i.title)
-//                println(i.videoSet)
-                println(i.lectureSet)
-            }
+        if self.project != nil {
+            self.lectures = self.project!.lectureSet
         }
         
-
+        if self.lectures.count == 0 {
+            println("no lectures")
+        }
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -50,24 +45,15 @@ class ProjectTableViewController: UITableViewController {
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete method implementation.
         // Return the number of rows in the section.
-        return self.projects.count
+        return self.lectures.count
     }
 
-    
+
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as! ProjectTableCell
-        let project = self.projects[indexPath.row]
-        // Configure the cell...
-        // cell.textLabel?.text = "\(indexPath.row + 1) - \(self.projects[indexPath.row].title)"
-        if project.imageUrlString != nil {
-            let imageUrl = NSURL(string: project.imageUrlString!)
-            let data = NSData(contentsOfURL: imageUrl!)
-            let image = UIImage(data: data!)
-            // let imageView = UIimageView()
-            cell.projectImage.image = image
-        }
-        cell.backgroundColor = self.view.backgroundColor
-        cell.projectLabel.text = "\(project.title)"
+        let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as! UITableViewCell
+
+        cell.textLabel?.text = self.lectures[indexPath.row].title
+
         return cell
     }
 
@@ -107,17 +93,14 @@ class ProjectTableViewController: UITableViewController {
     }
     */
 
-
+    /*
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        let vc = segue.destinationViewController as! LectureListTableViewController
-        let indexPath = self.tableView.indexPathForSelectedRow()
-        let project = self.projects[indexPath!.row]
-        vc.project = project
-        
+        // Get the new view controller using [segue destinationViewController].
+        // Pass the selected object to the new view controller.
     }
-    
+    */
 
 }

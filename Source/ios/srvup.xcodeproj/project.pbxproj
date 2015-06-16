@@ -21,6 +21,7 @@
 		0F0E022D1B2F3CDA00D35686 /* Project.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F0E022C1B2F3CDA00D35686 /* Project.swift */; };
 		0F584BD41B30673700C1FD47 /* ProjectTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F584BD31B30673700C1FD47 /* ProjectTableViewController.swift */; };
 		0F584BD91B307FDE00C1FD47 /* ProjectTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F584BD81B307FDE00C1FD47 /* ProjectTableCell.swift */; };
+		0F584BDD1B30875900C1FD47 /* LectureListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F584BDC1B30875900C1FD47 /* LectureListTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,6 +53,7 @@
 		0F0E022C1B2F3CDA00D35686 /* Project.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Project.swift; sourceTree = "<group>"; };
 		0F584BD31B30673700C1FD47 /* ProjectTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectTableViewController.swift; sourceTree = "<group>"; };
 		0F584BD81B307FDE00C1FD47 /* ProjectTableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectTableCell.swift; sourceTree = "<group>"; };
+		0F584BDC1B30875900C1FD47 /* LectureListTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LectureListTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,6 +103,7 @@
 				0F0E02021B2DF3B500D35686 /* AuthViewController.swift */,
 				0F584BD31B30673700C1FD47 /* ProjectTableViewController.swift */,
 				0F584BD81B307FDE00C1FD47 /* ProjectTableCell.swift */,
+				0F584BDC1B30875900C1FD47 /* LectureListTableViewController.swift */,
 				0F0E02281B2F1A2000D35686 /* ViewController.swift */,
 				0F0E02041B2DF3B500D35686 /* Main.storyboard */,
 				0F0E02071B2DF3B500D35686 /* Images.xcassets */,
@@ -273,6 +276,7 @@
 				0F0E02291B2F1A2000D35686 /* ViewController.swift in Sources */,
 				0F0E02031B2DF3B500D35686 /* AuthViewController.swift in Sources */,
 				0F0E022D1B2F3CDA00D35686 /* Project.swift in Sources */,
+				0F584BDD1B30875900C1FD47 /* LectureListTableViewController.swift in Sources */,
 				0F0E02011B2DF3B500D35686 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
