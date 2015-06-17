@@ -22,6 +22,32 @@ class AuthViewController: UIViewController, UITextFieldDelegate {
     let submitBtn = UIButton.buttonWithType(.System) as! UIButton
     var projects = [Project]()
     
+    override func viewWillAppear(animated: Bool) {
+        let token = self.keychain["token"]
+        if token != nil {
+            let url = NSURL(string: self.projectsURL)
+            var mutRequest = NSMutableURLRequest(URL: url!)
+            mutRequest.setValue("JWT \(token!)", forHTTPHeaderField: "Authorization")
+            mutRequest.HTTPMethod = "GET"
+            
+            var manager = Alamofire.Manager.sharedInstance
+            
+            var checkRequest = manager.request(mutRequest)
+            checkRequest.response({ (request, response, data, error) -> Void in
+                let statusCode = response?.statusCode
+                println(statusCode)
+                if statusCode == 200 {
+                    self.getProjects()
+                } else {
+                    self.keychain["token"] = nil
+                    self.viewWillAppear(false)
+                }
+            })
+            
+            
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     
