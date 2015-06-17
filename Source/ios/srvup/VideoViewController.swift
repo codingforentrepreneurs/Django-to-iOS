@@ -10,18 +10,28 @@ import UIKit
 
 class VideoViewController: UIViewController {
     var lecture: Lecture?
+    var webView = UIWebView()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         let label = UILabel()
-        label.frame = CGRectMake(0, 30, self.view.frame.width, 150)
+        label.frame = CGRectMake(0, 30, self.view.frame.width, 50)
+        
         if self.lecture != nil {
-            label.text = "Title: \(self.lecture!.title)"
+            let webViewWidth = self.view.frame.width - 20
+            let webViewVideoHeight = 275
+            let embedCode = lecture!.embedCode
+            let cssCode = "<style>body{padding:0px;margin:0px;}iframe{width:\(webViewWidth);height:\(webViewVideoHeight);}</style>"
+            let htmlCode = "<html>\(cssCode)<body><h1>\(self.lecture!.title)</h1>\(embedCode)</body></html>"
+            self.webView.frame = CGRectMake(10, 50, webViewWidth, 350)
+            let url = NSURL(string: "http://codingforentrepreneurs.com")
+            self.webView.loadHTMLString(htmlCode, baseURL: url)
+            self.webView.scrollView.bounces = false
+            
+            
         }
-        
-        
-        self.view.addSubview(label)
+            // self.view.addSubview(label)
+        self.view.addSubview(self.webView)
         // Do any additional setup after loading the view.
     }
 
