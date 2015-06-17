@@ -96,6 +96,9 @@
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="DO2-aj-3uT" id="82k-Ay-TIy">
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="Zbf-Xs-DTB" kind="show" identifier="viewVideo" id="q7k-4i-6kH"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -107,6 +110,24 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Yoq-R9-EP7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2656" y="-779"/>
+        </scene>
+        <!--Video View Controller-->
+        <scene sceneID="lPD-9e-kQF">
+            <objects>
+                <viewController id="Zbf-Xs-DTB" customClass="VideoViewController" customModule="srvup" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="d2B-OV-ynj"/>
+                        <viewControllerLayoutGuide type="bottom" id="leZ-9F-S5b"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="5tj-lD-GOf">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="7YC-6c-eJS" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3338" y="-785"/>
         </scene>
     </scenes>
 </document>
