@@ -30,10 +30,10 @@ class ProjectTableViewController: UITableViewController {
             }
         }
         
-        let btn = UINavButton(title: "Logout", direction: UIButtonDirection.Right, parentView: self.view)
+        let btn = UINavButton(title: "Logout", direction: UIButtonDirection.Right, parentView: self.tableView)
         btn.addTarget(self, action: "doLogout:", forControlEvents: UIControlEvents.TouchUpInside)
         btn.titleLabel?.adjustsFontSizeToFitWidth = true
-        self.view.addSubview(btn)
+        self.tableView.addSubview(btn)
         
 
         // Uncomment the following line to preserve selection between presentations
@@ -85,6 +85,7 @@ class ProjectTableViewController: UITableViewController {
     func doLogout(sender:AnyObject) {
         println("logout")
         self.keychain["token"] = nil
+        self.navigationController?.popViewControllerAnimated(true)
         self.dismissViewControllerAnimated(true, completion: nil)
         
     }

@@ -23,10 +23,11 @@ class VideoViewController: UIViewController {
             let embedCode = lecture!.embedCode
             let cssCode = "<style>body{padding:0px;margin:0px;}iframe{width:\(webViewWidth);height:\(webViewVideoHeight);}</style>"
             let htmlCode = "<html>\(cssCode)<body><h1>\(self.lecture!.title)</h1>\(embedCode)</body></html>"
-            self.webView.frame = CGRectMake(10, 50, webViewWidth, 350)
+            self.webView.frame = CGRectMake(10, 50, webViewWidth, 375)
             let url = NSURL(string: "http://codingforentrepreneurs.com")
             self.webView.loadHTMLString(htmlCode, baseURL: url)
             self.webView.scrollView.bounces = false
+            self.webView.backgroundColor = .whiteColor()
             
             
         }
@@ -41,6 +42,7 @@ class VideoViewController: UIViewController {
     }
     
     func popView(sender:AnyObject) {
+        self.navigationController?.popViewControllerAnimated(true)
        self.dismissViewControllerAnimated(true, completion: nil)
     }
 

@@ -64,6 +64,7 @@ class AuthViewController: UIViewController, UITextFieldDelegate {
         super.viewDidLoad()
     
         self.addLoginForm()
+        self.navigationController?.navigationBarHidden = true
     }
     
 

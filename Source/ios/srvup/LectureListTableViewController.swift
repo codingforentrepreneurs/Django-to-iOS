@@ -32,12 +32,12 @@ class LectureListTableViewController: UITableViewController, UIAlertViewDelegate
             label.textAlignment = NSTextAlignment.Center
             self.headerView.addSubview(label)
         }
-    
         
         
-        let btn = UINavButton(title: "Back", direction: UIButtonDirection.Right, parentView: self.headerView)
+        
+        let btn = UINavButton(title: "Back", direction: UIButtonDirection.Right, parentView: self.tableView)
         btn.addTarget(self, action: "popView:", forControlEvents: UIControlEvents.TouchUpInside)
-        self.headerView.addSubview(btn)
+        self.tableView.addSubview(btn)
 
         self.tableView.tableHeaderView = self.headerView
         
@@ -59,6 +59,7 @@ class LectureListTableViewController: UITableViewController, UIAlertViewDelegate
     }
     
     func popView(sender:AnyObject) {
+        self.navigationController?.popViewControllerAnimated(true)
         self.dismissViewControllerAnimated(true, completion: nil)
     }
     
