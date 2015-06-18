@@ -32,7 +32,7 @@ class VideoViewController: UIViewController {
         }
             // self.view.addSubview(label)
         
-        let btn = UINavButton(title: "Back")
+        let btn = UINavButton(title: "Back", direction: .Right, parentView: self.view)
         
         self.view.addSubview(self.webView)
         self.view.addSubview(btn)

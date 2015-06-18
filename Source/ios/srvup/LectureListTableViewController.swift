@@ -35,7 +35,7 @@ class LectureListTableViewController: UITableViewController, UIAlertViewDelegate
     
         
         
-        let btn = UINavButton(title: "Back")
+        let btn = UINavButton(title: "Back", direction: UIButtonDirection.Right, parentView: self.headerView)
         self.headerView.addSubview(btn)
 
         self.tableView.tableHeaderView = self.headerView

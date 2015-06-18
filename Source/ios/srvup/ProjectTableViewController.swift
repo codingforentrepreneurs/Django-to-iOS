@@ -26,9 +26,8 @@ class ProjectTableViewController: UITableViewController {
             }
         }
         
-        let btn = UINavButton(title: "Logout")
+        let btn = UINavButton(title: "Logout", direction: UIButtonDirection.Right, parentView: self.view)
         btn.titleLabel?.adjustsFontSizeToFitWidth = true
-        
         self.view.addSubview(btn)
         
 

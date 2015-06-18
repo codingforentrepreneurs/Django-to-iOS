@@ -11,12 +11,21 @@ import UIKit
 
 
 public class UINavButton: UIButton {
-    init(title:String) {
+    init(title:String, direction:UIButtonDirection, parentView:UIView?) {
         let diameter = CGFloat(50)
         let radius = diameter/2.0
         let xOffset = CGFloat(5)
         let yOffset = CGFloat(20)
-        let newFrame = CGRectMake(xOffset, yOffset, diameter, diameter)
+        var newFrame = CGRectMake(xOffset, yOffset, diameter, diameter)
+        switch direction{
+        case .Right:
+            if parentView != nil {
+                newFrame = CGRectMake(parentView!.frame.width - diameter - xOffset, yOffset, diameter, diameter)
+            }
+        default:
+            newFrame = CGRectMake(xOffset, yOffset, diameter, diameter)
+        }
+        
         super.init(frame: newFrame)
         
         self.setTitle(title, forState: UIControlState.Normal)
@@ -29,4 +38,8 @@ public class UINavButton: UIButton {
         fatalError("init(coder:) has not been implemented")
     }
     
+}
+
+public enum UIButtonDirection {
+    case Left, Right
 }
