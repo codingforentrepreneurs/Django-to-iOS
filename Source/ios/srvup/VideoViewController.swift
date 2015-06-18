@@ -11,11 +11,18 @@ import UIKit
 class VideoViewController: UIViewController {
     var lecture: Lecture?
     var webView = UIWebView()
-
+    let user = User()
+    
+    override func viewWillAppear(animated: Bool) {
+        user.checkToken()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         let label = UILabel()
         label.frame = CGRectMake(0, 30, self.view.frame.width, 50)
+        
+        
         
         if self.lecture != nil {
             let webViewWidth = self.view.frame.width - 20
@@ -42,8 +49,8 @@ class VideoViewController: UIViewController {
     }
     
     func popView(sender:AnyObject) {
-        self.navigationController?.popViewControllerAnimated(true)
-       self.dismissViewControllerAnimated(true, completion: nil)
+       self.navigationController?.popViewControllerAnimated(true)
+       // self.dismissViewControllerAnimated(true, completion: nil)
     }
 
     override func didReceiveMemoryWarning() {

@@ -14,6 +14,11 @@ class ProjectTableViewController: UITableViewController {
     var projects = [Project]()
     let keychain = Keychain(service: "com.codingforentrepreneurs.srvup")
 
+    let user = User()
+    
+    override func viewWillAppear(animated: Bool) {
+        user.checkToken()
+    }
     
     
     override func viewDidLoad() {

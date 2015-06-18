@@ -12,7 +12,11 @@ class LectureListTableViewController: UITableViewController, UIAlertViewDelegate
     var project: Project?
     var lectures = [Lecture]()
     var headerView = UIView()
-
+    let user = User()
+    
+    override func viewWillAppear(animated: Bool) {
+        user.checkToken()
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         

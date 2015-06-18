@@ -212,6 +212,7 @@ class AuthViewController: UIViewController, UITextFieldDelegate {
         case 200...299:
             let jsonData = JSON(data!)
             let results = jsonData["results"]
+            var newProjects = [Project]()
             for (index:String, subJSON:JSON) in results {
                 let project = Project(title: subJSON["title"].string!, url: subJSON["url"].string!, id: subJSON["id"].int!)
                 
@@ -221,8 +222,9 @@ class AuthViewController: UIViewController, UITextFieldDelegate {
                 if subJSON["image"] != nil {
                     project.imageUrlString = subJSON["image"].string!
                 }
-                self.projects.append(project)
+                newProjects.append(project)
             }
+            self.projects = newProjects
             // println(self.projects)
             // println(self.projects.count)
             self.performSegueWithIdentifier("showProjects", sender: self)
