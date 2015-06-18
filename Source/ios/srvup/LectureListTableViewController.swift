@@ -33,6 +33,10 @@ class LectureListTableViewController: UITableViewController, UIAlertViewDelegate
             self.headerView.addSubview(label)
         }
     
+        
+        
+        let btn = UINavButton(title: "Back")
+        self.headerView.addSubview(btn)
 
         self.tableView.tableHeaderView = self.headerView
         

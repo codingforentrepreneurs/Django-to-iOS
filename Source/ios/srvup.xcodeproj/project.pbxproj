@@ -23,6 +23,7 @@
 		0F584BD91B307FDE00C1FD47 /* ProjectTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F584BD81B307FDE00C1FD47 /* ProjectTableCell.swift */; };
 		0F584BDD1B30875900C1FD47 /* LectureListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F584BDC1B30875900C1FD47 /* LectureListTableViewController.swift */; };
 		0F584BDF1B31AEE400C1FD47 /* VideoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F584BDE1B31AEE400C1FD47 /* VideoViewController.swift */; };
+		0F584BE51B33106100C1FD47 /* UINavButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F584BE41B33106100C1FD47 /* UINavButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,6 +57,7 @@
 		0F584BD81B307FDE00C1FD47 /* ProjectTableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectTableCell.swift; sourceTree = "<group>"; };
 		0F584BDC1B30875900C1FD47 /* LectureListTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LectureListTableViewController.swift; sourceTree = "<group>"; };
 		0F584BDE1B31AEE400C1FD47 /* VideoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoViewController.swift; sourceTree = "<group>"; };
+		0F584BE41B33106100C1FD47 /* UINavButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UINavButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -114,6 +116,7 @@
 				0F0E01FE1B2DF3B500D35686 /* Supporting Files */,
 				0F0E022A1B2F3B9200D35686 /* ProjectViewController.swift */,
 				0F0E02281B2F1A2000D35686 /* ViewController.swift */,
+				0F584BE41B33106100C1FD47 /* UINavButton.swift */,
 			);
 			path = srvup;
 			sourceTree = "<group>";
@@ -282,6 +285,7 @@
 				0F0E022D1B2F3CDA00D35686 /* Project.swift in Sources */,
 				0F584BDD1B30875900C1FD47 /* LectureListTableViewController.swift in Sources */,
 				0F0E02011B2DF3B500D35686 /* AppDelegate.swift in Sources */,
+				0F584BE51B33106100C1FD47 /* UINavButton.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
