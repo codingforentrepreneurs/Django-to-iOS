@@ -36,6 +36,7 @@ class LectureListTableViewController: UITableViewController, UIAlertViewDelegate
         
         
         let btn = UINavButton(title: "Back", direction: UIButtonDirection.Right, parentView: self.headerView)
+        btn.addTarget(self, action: "popView:", forControlEvents: UIControlEvents.TouchUpInside)
         self.headerView.addSubview(btn)
 
         self.tableView.tableHeaderView = self.headerView
@@ -55,6 +56,10 @@ class LectureListTableViewController: UITableViewController, UIAlertViewDelegate
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+    }
+    
+    func popView(sender:AnyObject) {
+        self.dismissViewControllerAnimated(true, completion: nil)
     }
     
     func alertView(alertView: UIAlertView, didDismissWithButtonIndex buttonIndex: Int) {

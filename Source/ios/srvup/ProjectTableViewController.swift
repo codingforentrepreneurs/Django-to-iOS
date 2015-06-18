@@ -8,8 +8,12 @@
 
 import UIKit
 
+import KeychainAccess
+
 class ProjectTableViewController: UITableViewController {
     var projects = [Project]()
+    let keychain = Keychain(service: "com.codingforentrepreneurs.srvup")
+
     
     
     override func viewDidLoad() {
@@ -27,6 +31,7 @@ class ProjectTableViewController: UITableViewController {
         }
         
         let btn = UINavButton(title: "Logout", direction: UIButtonDirection.Right, parentView: self.view)
+        btn.addTarget(self, action: "doLogout:", forControlEvents: UIControlEvents.TouchUpInside)
         btn.titleLabel?.adjustsFontSizeToFitWidth = true
         self.view.addSubview(btn)
         
@@ -75,6 +80,14 @@ class ProjectTableViewController: UITableViewController {
         return cell
     }
 
+    
+
+    func doLogout(sender:AnyObject) {
+        println("logout")
+        self.keychain["token"] = nil
+        self.dismissViewControllerAnimated(true, completion: nil)
+        
+    }
 
     /*
     // Override to support conditional editing of the table view.

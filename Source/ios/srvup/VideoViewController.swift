@@ -33,10 +33,15 @@ class VideoViewController: UIViewController {
             // self.view.addSubview(label)
         
         let btn = UINavButton(title: "Back", direction: .Right, parentView: self.view)
+        btn.addTarget(self, action: "popView:", forControlEvents: UIControlEvents.TouchUpInside)
         
         self.view.addSubview(self.webView)
         self.view.addSubview(btn)
         // Do any additional setup after loading the view.
+    }
+    
+    func popView(sender:AnyObject) {
+       self.dismissViewControllerAnimated(true, completion: nil)
     }
 
     override func didReceiveMemoryWarning() {

@@ -23,6 +23,18 @@ class AuthViewController: UIViewController, UITextFieldDelegate {
     var projects = [Project]()
     
     override func viewWillAppear(animated: Bool) {
+        self.messageText.text = ""
+        self.passwordField.text = ""
+        
+        let username = self.keychain["user"]
+        
+        if username != nil {
+            self.usernameField.text = username
+            self.passwordField.becomeFirstResponder()
+        } else {
+            self.usernameField.becomeFirstResponder()
+        }
+        
         let token = self.keychain["token"]
         if token != nil {
             let url = NSURL(string: self.projectsURL)
@@ -72,9 +84,9 @@ class AuthViewController: UIViewController, UITextFieldDelegate {
         self.usernameField.placeholder = "Username"
         self.usernameField.returnKeyType = UIReturnKeyType.Next
         self.usernameField.delegate = self
-        if count(self.usernameField.text) == 0 {
-             self.usernameField.becomeFirstResponder()
-        }
+//        if count(self.usernameField.text) == 0 {
+//             self.usernameField.becomeFirstResponder()
+//        }
         
         self.passwordField.frame = CGRectMake(offset, 150, width, height)
         self.passwordField.placeholder = "Password"
@@ -233,6 +245,7 @@ class AuthViewController: UIViewController, UITextFieldDelegate {
             let vc = segue.destinationViewController as! ProjectTableViewController
             vc.projects = self.projects
         }
+        self.messageText.text = ""
     }
 
 }
