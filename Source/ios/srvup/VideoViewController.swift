@@ -13,6 +13,10 @@ class VideoViewController: UIViewController, UITextViewDelegate {
     var webView = UIWebView()
     var commentView = UIView()
     var message = UITextView()
+    let textArea = UITextView()
+    
+    let textAreaPlaceholder = "Your comment here..."
+    
     let user = User()
     
     override func viewWillAppear(animated: Bool) {
@@ -79,28 +83,59 @@ class VideoViewController: UIViewController, UITextViewDelegate {
 
         
         // text area field
-        let textArea = UITextView()
-        textArea.editable = true
-        textArea.text = "Your comment here..."
-        textArea.delegate = self
-        textArea.frame = CGRectMake(xOffset, label.frame.origin.y + label.frame.height + spacingE, label.frame.width, 250)
+        
+        self.textArea.editable = true
+        self.textArea.text = self.textAreaPlaceholder
+        self.textArea.delegate = self
+        self.textArea.frame = CGRectMake(xOffset, label.frame.origin.y + label.frame.height + spacingE, label.frame.width, 250)
         // submit button
         
         let submitBtn = UIButton()
-        submitBtn.frame = CGRectMake(xOffset, textArea.frame.origin.y + textArea.frame.height + spacingE, textArea.frame.width, 30)
+        submitBtn.frame = CGRectMake(xOffset, self.textArea.frame.origin.y + self.textArea.frame.height + spacingE, self.textArea.frame.width, 30)
         submitBtn.setTitle("Submit", forState: UIControlState.Normal)
+        submitBtn.addTarget(self, action: "commentFormAction:", forControlEvents: UIControlEvents.TouchUpInside)
+        submitBtn.tag = 1
         
         // cancel button
         let cancelBtn = UIButton()
         cancelBtn.frame = CGRectMake(xOffset, submitBtn.frame.origin.y + submitBtn.frame.height + spacingE, submitBtn.frame.width, 30)
         cancelBtn.setTitle("Cancel", forState: UIControlState.Normal)
+        cancelBtn.addTarget(self, action: "commentFormAction:", forControlEvents: UIControlEvents.TouchUpInside)
+        cancelBtn.tag = 2
         
         self.commentView.addSubview(label)
         self.commentView.addSubview(self.message)
-        self.commentView.addSubview(textArea)
+        self.commentView.addSubview(self.textArea)
         self.commentView.addSubview(submitBtn)
         self.commentView.addSubview(cancelBtn)
     }
+    
+    func textViewDidBeginEditing(textView: UITextView) {
+        self.message.text = ""
+        if textView.text == self.textAreaPlaceholder {
+            textView.text = ""
+        }
+    }
+
+    
+    func commentFormAction(sender: AnyObject) {
+        let tag = sender.tag
+        
+        switch tag {
+        case 1:
+            if self.textArea.text != "" && self.textArea.text != self.textAreaPlaceholder {
+                println(self.textArea.text)
+                self.commentView.removeFromSuperview()
+            } else {
+                self.message.text = "A comment is required."
+            }
+        default:
+            println("cancelled")
+            self.commentView.removeFromSuperview()
+
+        }
+    }
+    
     
     func popView(sender:AnyObject) {
        self.navigationController?.popViewControllerAnimated(true)
