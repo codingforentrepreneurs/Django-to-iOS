@@ -187,14 +187,14 @@ class AuthViewController: UIViewController, UITextFieldDelegate {
         self.messageText.text = "Getting..."
         let token = self.keychain["token"]
         if token != nil {
-            let url = NSURL(string: self.projectsURL)
-            var mutableURLRequest = NSMutableURLRequest(URL:url!)
-            mutableURLRequest.setValue("JWT \(token!)", forHTTPHeaderField: "Authorization")
-            mutableURLRequest.HTTPMethod = "GET"
+            
             var manager = Alamofire.Manager.sharedInstance
-        
-            var getProjectsRequest = manager.request(mutableURLRequest)
-        
+            manager.session.configuration.HTTPAdditionalHeaders = [
+                "Authorization": "JWT \(token!)"
+            ]
+            
+            var getProjectsRequest = manager.request(Method.GET, self.projectsURL)
+            
             getProjectsRequest.responseJSON(options: nil, completionHandler:projectsReceived)
         
         } else {
