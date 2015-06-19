@@ -162,12 +162,15 @@ class AuthViewController: UIViewController, UITextFieldDelegate {
             // success: use the data
             self.messageText.text = "Auth success!"
             let jsonData = JSON(data!)
+            println(jsonData)
             let token = jsonData["token"].string
             let user = jsonData["user"].string!
+            let userid = jsonData["userid"].string!
             let active = jsonData["active"].bool!
             if active {
                 self.keychain["token"] = token
                 self.keychain["user"] = user
+                self.keychain["userid"] = userid
             } else {
                 self.keychain["token"] = nil
             }

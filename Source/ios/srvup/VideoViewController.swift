@@ -125,6 +125,8 @@ class VideoViewController: UIViewController, UITextViewDelegate {
         case 1:
             if self.textArea.text != "" && self.textArea.text != self.textAreaPlaceholder {
                 println(self.textArea.text)
+                self.lecture!.addComment(self.textArea.text)
+                println(self.lecture!.commentSet.count)
                 self.commentView.removeFromSuperview()
             } else {
                 self.message.text = "A comment is required."

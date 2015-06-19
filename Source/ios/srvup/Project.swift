@@ -8,6 +8,8 @@
 
 import UIKit
 import Foundation
+import Alamofire
+import KeychainAccess
 import SwiftyJSON
 
 class Project:NSObject {
@@ -77,6 +79,38 @@ class Lecture: NSObject {
         self.slug = slug
         self.order = order
         self.embedCode = embedCode
+    }
+    
+    func addComment(commentText:String){
+        let commentCreateUrlString = "http://127.0.0.1:8000/api2/comment/create/"
+        let keychain = Keychain(service: "com.codingforentrepreneurs.srvup")
+        let token = keychain["token"]
+        let userid = keychain["userid"]
+        if token != nil && userid != nil {
+            var manager = Alamofire.Manager.sharedInstance
+            manager.session.configuration.HTTPAdditionalHeaders = [
+                "Authorization": "JWT \(token!)"
+            ]
+            let params = ["text" : commentText, "video": "\(self.id)", "user": "\(userid!)"]
+            
+            let addCommentRequest = manager.request(Method.POST, commentCreateUrlString, parameters:params, encoding: ParameterEncoding.JSON)
+            println(self.commentSet.count)
+            addCommentRequest.responseJSON(options: nil, completionHandler: { (request, response, data, error) -> Void in
+                // println(response)
+                // println(data)
+                if data != nil {
+                    let jsonData = JSON(data!)
+                    self.commentSet.append(jsonData)
+                }
+                println("this is the amoun!! \(self.commentSet.count)")
+                println(self.commentSet)
+            })
+            
+        
+            
+        } else {
+            println("No token")
+        }
     }
     
     
