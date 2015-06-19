@@ -81,7 +81,7 @@ class Lecture: NSObject {
         self.embedCode = embedCode
     }
     
-    func addComment(commentText:String){
+    func addComment(commentText:String, completion:(success:Bool)->Void){
         let commentCreateUrlString = "http://127.0.0.1:8000/api2/comment/create/"
         let keychain = Keychain(service: "com.codingforentrepreneurs.srvup")
         let token = keychain["token"]
@@ -96,14 +96,15 @@ class Lecture: NSObject {
             let addCommentRequest = manager.request(Method.POST, commentCreateUrlString, parameters:params, encoding: ParameterEncoding.JSON)
             println(self.commentSet.count)
             addCommentRequest.responseJSON(options: nil, completionHandler: { (request, response, data, error) -> Void in
-                // println(response)
-                // println(data)
-                if data != nil {
+                let statusCode = response?.statusCode
+                if statusCode == 200 && data != nil {
                     let jsonData = JSON(data!)
                     self.commentSet.append(jsonData)
+                    completion(success: true)
+                } else {
+                    completion(success: false)
+                    
                 }
-                println("this is the amoun!! \(self.commentSet.count)")
-                println(self.commentSet)
             })
             
         
