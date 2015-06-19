@@ -8,9 +8,11 @@
 
 import UIKit
 
-class VideoViewController: UIViewController {
+class VideoViewController: UIViewController, UITextViewDelegate {
     var lecture: Lecture?
     var webView = UIWebView()
+    var commentView = UIView()
+    var message = UITextView()
     let user = User()
     
     override func viewWillAppear(animated: Bool) {
@@ -43,9 +45,61 @@ class VideoViewController: UIViewController {
         let btn = UINavButton(title: "Back", direction: .Right, parentView: self.view)
         btn.addTarget(self, action: "popView:", forControlEvents: UIControlEvents.TouchUpInside)
         
+        
+        let addFormBtn = UINavButton(title: "New", direction: .Right, parentView: self.view)
+        addFormBtn.frame = CGRectMake(btn.frame.origin.x, btn.frame.origin.y + btn.frame.height + 5, btn.frame.width, btn.frame.height)
+        addFormBtn.addTarget(self, action: "newComment:", forControlEvents: UIControlEvents.TouchUpInside)
+        
         self.view.addSubview(self.webView)
         self.view.addSubview(btn)
+         self.view.addSubview(addFormBtn)
         // Do any additional setup after loading the view.
+    }
+    
+    func newComment(sender:AnyObject){
+        self.commentView.frame = CGRectMake(0, 0, self.view.frame.width, self.view.frame.height)
+        self.commentView.backgroundColor = .blackColor()
+        self.view.addSubview(self.commentView)
+        
+        let topOffset = CGFloat(25)
+        let xOffset = CGFloat(10)
+        let spacingE = CGFloat(10)
+        
+        // response message
+        self.message.editable = false
+        self.message.frame = CGRectMake(xOffset, topOffset, self.commentView.frame.width - (2 * xOffset), 30)
+        self.message.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.0)
+        self.message.textColor = .redColor()
+        
+        // title
+        let label = UILabel()
+        label.text = "Add new Comment"
+        label.frame = CGRectMake(xOffset, self.message.frame.origin.y + self.message.frame.height + spacingE, self.message.frame.width, 30)
+        label.textColor = .whiteColor()
+
+        
+        // text area field
+        let textArea = UITextView()
+        textArea.editable = true
+        textArea.text = "Your comment here..."
+        textArea.delegate = self
+        textArea.frame = CGRectMake(xOffset, label.frame.origin.y + label.frame.height + spacingE, label.frame.width, 250)
+        // submit button
+        
+        let submitBtn = UIButton()
+        submitBtn.frame = CGRectMake(xOffset, textArea.frame.origin.y + textArea.frame.height + spacingE, textArea.frame.width, 30)
+        submitBtn.setTitle("Submit", forState: UIControlState.Normal)
+        
+        // cancel button
+        let cancelBtn = UIButton()
+        cancelBtn.frame = CGRectMake(xOffset, submitBtn.frame.origin.y + submitBtn.frame.height + spacingE, submitBtn.frame.width, 30)
+        cancelBtn.setTitle("Cancel", forState: UIControlState.Normal)
+        
+        self.commentView.addSubview(label)
+        self.commentView.addSubview(self.message)
+        self.commentView.addSubview(textArea)
+        self.commentView.addSubview(submitBtn)
+        self.commentView.addSubview(cancelBtn)
     }
     
     func popView(sender:AnyObject) {
