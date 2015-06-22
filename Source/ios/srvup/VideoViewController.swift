@@ -124,6 +124,7 @@ class VideoViewController: UIViewController, UITextViewDelegate {
         switch tag {
         case 1:
             if self.textArea.text != "" && self.textArea.text != self.textAreaPlaceholder {
+                self.textArea.endEditing(true)
                 self.lecture!.addComment(self.textArea.text, completion: addCommentCompletionHandler)
             } else {
                 self.message.text = "A comment is required."
@@ -136,10 +137,11 @@ class VideoViewController: UIViewController, UITextViewDelegate {
     }
     
     func addCommentCompletionHandler(success:Bool) -> Void {
-        if success {
-            self.commentView.removeFromSuperview()
+        if !success {
+            // not successful comment so the new comment view again
+            self.newComment(self)
         } else {
-            println("something else")
+            self.commentView.removeFromSuperview()
         }
     }
     
