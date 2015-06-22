@@ -97,7 +97,9 @@ class Lecture: NSObject {
             println(self.commentSet.count)
             addCommentRequest.responseJSON(options: nil, completionHandler: { (request, response, data, error) -> Void in
                 let statusCode = response?.statusCode
-                if statusCode == 200 && data != nil {
+                
+                // 201
+                if (200 ... 299 ~= statusCode!) && (data != nil) {
                     let jsonData = JSON(data!)
                     self.commentSet.append(jsonData)
                     completion(success: true)

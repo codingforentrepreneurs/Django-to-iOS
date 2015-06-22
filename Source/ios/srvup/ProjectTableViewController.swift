@@ -26,14 +26,6 @@ class ProjectTableViewController: UITableViewController {
         
         self.view.backgroundColor = .blackColor()
         self.tableView.separatorStyle = UITableViewCellSeparatorStyle.None
-        if self.projects.count > 0 {
-            for i in projects {
-                println("")
-//                println(i.title)
-//                println(i.videoSet)
-                println(i.lectureSet)
-            }
-        }
         
         let btn = UINavButton(title: "Logout", direction: UIButtonDirection.Right, parentView: self.tableView)
         btn.addTarget(self, action: "doLogout:", forControlEvents: UIControlEvents.TouchUpInside)
@@ -88,7 +80,7 @@ class ProjectTableViewController: UITableViewController {
     
 
     func doLogout(sender:AnyObject) {
-        println("logout")
+        // println("logout")
         self.keychain["token"] = nil
         self.navigationController?.popViewControllerAnimated(true)
         self.dismissViewControllerAnimated(true, completion: nil)

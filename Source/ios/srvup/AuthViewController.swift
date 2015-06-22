@@ -47,7 +47,7 @@ class AuthViewController: UIViewController, UITextFieldDelegate {
             var checkRequest = manager.request(mutRequest)
             checkRequest.response({ (request, response, data, error) -> Void in
                 let statusCode = response?.statusCode
-                println(statusCode)
+                // println(statusCode)
                 if statusCode == 200 {
                     self.getProjects()
                 } else {
@@ -162,7 +162,7 @@ class AuthViewController: UIViewController, UITextFieldDelegate {
             // success: use the data
             self.messageText.text = "Auth success!"
             let jsonData = JSON(data!)
-            println(jsonData)
+            // println(jsonData)
             let token = jsonData["token"].string
             let user = jsonData["user"].string!
             let userid = jsonData["userid"].string!
