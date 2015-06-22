@@ -14,6 +14,7 @@ class VideoViewController: UIViewController, UITextViewDelegate {
     var commentView = UIView()
     var message = UITextView()
     let textArea = UITextView()
+    var notification = UITextView()
     
     let textAreaPlaceholder = "Your comment here..."
     
@@ -56,9 +57,10 @@ class VideoViewController: UIViewController, UITextViewDelegate {
         
         self.view.addSubview(self.webView)
         self.view.addSubview(btn)
-         self.view.addSubview(addFormBtn)
+        self.view.addSubview(addFormBtn)
         // Do any additional setup after loading the view.
     }
+    
     
     func newComment(sender:AnyObject){
         self.commentView.frame = CGRectMake(0, 0, self.view.frame.width, self.view.frame.height)
@@ -116,6 +118,31 @@ class VideoViewController: UIViewController, UITextViewDelegate {
             textView.text = ""
         }
     }
+    
+    func tiggerNotification(message:String) {
+        self.notification.text = message
+        self.notification.textAlignment = .Center
+        self.notification.font = UIFont.systemFontOfSize(18.0)
+        self.notification.sizeToFit()
+        self.notification.textColor = .whiteColor()
+        self.notification.removeFromSuperview()
+        self.notification.frame = CGRectMake(75, 20, self.view.frame.width - 150, 30)
+        self.notification.backgroundColor = .redColor()
+        self.notification.layer.cornerRadius = 25
+        self.notification.layer.masksToBounds = true
+        self.view.addSubview(notification)
+        
+        let seconds = 2.0
+        let delay = seconds * Double(NSEC_PER_SEC)
+        let now = DISPATCH_TIME_NOW
+        var theTimeToDispatch = dispatch_time(now, Int64(delay))
+        
+        dispatch_after(theTimeToDispatch, dispatch_get_main_queue()) { () -> Void in
+            self.notification.removeFromSuperview()
+        }
+    }
+    
+    
 
     
     func commentFormAction(sender: AnyObject) {
@@ -139,9 +166,19 @@ class VideoViewController: UIViewController, UITextViewDelegate {
     func addCommentCompletionHandler(success:Bool) -> Void {
         if !success {
             // not successful comment so the new comment view again
+//            let alert = UIAlertView(title: "Could not add comment", message: "Please try again.", delegate: nil, cancelButtonTitle: "Okay")
+//            alert.show()
+            
+            
             self.newComment(self)
+            self.tiggerNotification("Failed to add")
         } else {
+            self.tiggerNotification("New comment added!")
             self.commentView.removeFromSuperview()
+            
+            
+//            let alert = UIAlertView(title: "Thank you for the comment.", message: "", delegate: nil, cancelButtonTitle: "Okay")
+//            alert.show()
         }
     }
     
