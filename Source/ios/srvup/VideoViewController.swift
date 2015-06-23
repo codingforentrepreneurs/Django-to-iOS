@@ -14,10 +14,7 @@ class VideoViewController: UIViewController, UITextViewDelegate {
     var commentView = UIView()
     var message = UITextView()
     let textArea = UITextView()
-    var notification = UITextView()
-    
     let textAreaPlaceholder = "Your comment here..."
-    
     let user = User()
     
     override func viewWillAppear(animated: Bool) {
@@ -122,7 +119,7 @@ class VideoViewController: UIViewController, UITextViewDelegate {
         self.commentView.addSubview(submitBtn)
         self.commentView.addSubview(cancelBtn)
         self.view.addSubview(self.commentView)
-        self.fadeIn(self.commentView, speed: 0.5)
+        Notification().fadeIn(self.commentView, speed: 0.5)
     }
     
     func textViewDidBeginEditing(textView: UITextView) {
@@ -132,44 +129,7 @@ class VideoViewController: UIViewController, UITextViewDelegate {
         }
     }
     
-    func fadeIn(theView:UIView, speed:Double) {
-        theView.alpha = 0
-        UIView.animateWithDuration(speed, animations: { () -> Void in
-            theView.alpha = 1
-        })
-    }
-    
-    func fadeOut(theView:UIView, speed:Double) {
-        UIView.animateWithDuration(speed, animations: { () -> Void in
-            self.notification.alpha = 0
-        })
-        
-    }
-    
-    func tiggerNotification(message:String) {
-        self.fadeIn(self.notification, speed: 1.0)
-        self.notification.text = message
-        self.notification.textAlignment = .Center
-        self.notification.font = UIFont.systemFontOfSize(18.0)
-        self.notification.sizeToFit()
-        self.notification.textColor = .whiteColor()
-        self.notification.removeFromSuperview()
-        self.notification.frame = CGRectMake(75, 20, self.view.frame.width - 150, 30)
-        self.notification.backgroundColor = .redColor()
-        self.notification.layer.cornerRadius = 25
-        self.notification.layer.masksToBounds = true
-        self.view.addSubview(notification)
-        
-        let seconds = 1.0
-        let delay = seconds * Double(NSEC_PER_SEC)
-        let now = DISPATCH_TIME_NOW
-        var theTimeToDispatch = dispatch_time(now, Int64(delay))
-        
-        dispatch_after(theTimeToDispatch, dispatch_get_main_queue()) { () -> Void in
-            self.fadeOut(self.notification, speed:1.5)
-            // self.notification.removeFromSuperview()
-        }
-    }
+
     
     
 
@@ -194,15 +154,12 @@ class VideoViewController: UIViewController, UITextViewDelegate {
     
     func addCommentCompletionHandler(success:Bool) -> Void {
         if !success {
-            // not successful comment so the new comment view again
-//            let alert = UIAlertView(title: "Could not add comment", message: "Please try again.", delegate: nil, cancelButtonTitle: "Okay")
-//            alert.show()
-            
-            
             self.newComment(self)
-            self.tiggerNotification("Failed to add")
+            Notification().notify("Failed to add", delay: 2.5, inSpeed: 0.7, outSpeed: 1.2)
+            // self.tiggerNotification()
         } else {
-            self.tiggerNotification("New comment added!")
+            // self.tiggerNotification("New comment added!")
+            Notification().notify("Message Added", delay: 1.5, inSpeed: 0.5, outSpeed: 1.0)
             self.commentView.removeFromSuperview()
             
             

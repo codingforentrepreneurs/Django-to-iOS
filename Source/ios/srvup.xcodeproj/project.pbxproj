@@ -26,6 +26,7 @@
 		0F584BE51B33106100C1FD47 /* UINavButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F584BE41B33106100C1FD47 /* UINavButton.swift */; };
 		0F584BE91B3343C300C1FD47 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F584BE81B3343C300C1FD47 /* User.swift */; };
 		0FADB4CD1B39B2030029959F /* CommentTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FADB4CC1B39B2030029959F /* CommentTableViewController.swift */; };
+		0FADB4D11B39D1060029959F /* Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FADB4D01B39D1060029959F /* Notification.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -62,6 +63,7 @@
 		0F584BE41B33106100C1FD47 /* UINavButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UINavButton.swift; sourceTree = "<group>"; };
 		0F584BE81B3343C300C1FD47 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		0FADB4CC1B39B2030029959F /* CommentTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommentTableViewController.swift; sourceTree = "<group>"; };
+		0FADB4D01B39D1060029959F /* Notification.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Notification.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -115,6 +117,7 @@
 				0F584BDC1B30875900C1FD47 /* LectureListTableViewController.swift */,
 				0F584BDE1B31AEE400C1FD47 /* VideoViewController.swift */,
 				0FADB4CC1B39B2030029959F /* CommentTableViewController.swift */,
+				0FADB4D01B39D1060029959F /* Notification.swift */,
 				0F0E02041B2DF3B500D35686 /* Main.storyboard */,
 				0F0E02071B2DF3B500D35686 /* Images.xcassets */,
 				0F0E02091B2DF3B500D35686 /* LaunchScreen.xib */,
@@ -289,6 +292,7 @@
 				0F0E02291B2F1A2000D35686 /* ViewController.swift in Sources */,
 				0F0E02031B2DF3B500D35686 /* AuthViewController.swift in Sources */,
 				0FADB4CD1B39B2030029959F /* CommentTableViewController.swift in Sources */,
+				0FADB4D11B39D1060029959F /* Notification.swift in Sources */,
 				0F0E022D1B2F3CDA00D35686 /* Project.swift in Sources */,
 				0F584BDD1B30875900C1FD47 /* LectureListTableViewController.swift in Sources */,
 				0F0E02011B2DF3B500D35686 /* AppDelegate.swift in Sources */,
