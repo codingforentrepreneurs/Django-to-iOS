@@ -10,6 +10,7 @@ import UIKit
 
 class CommentTableViewController: UITableViewController, UITextViewDelegate {
     var lecture: Lecture?
+    var webView = UIWebView()
     var message = UITextView()
     let textArea = UITextView()
     let textAreaPlaceholder = "Your comment here..."
@@ -17,17 +18,6 @@ class CommentTableViewController: UITableViewController, UITextViewDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        let headerView = UITextView()
-        headerView.frame = CGRectMake(0, 0, self.view.frame.width, 75)
-        headerView.text = "\(self.lecture!.title) \nComments"
-        headerView.textColor = .blackColor()
-        headerView.backgroundColor = .whiteColor()
-        headerView.textAlignment = .Center
-        headerView.font = UIFont.boldSystemFontOfSize(24)
-        self.tableView.tableHeaderView = headerView
-
-        self.tableView.tableFooterView = self.addContactForm()
         
         let btn = UINavButton(title: "Back", direction: .Right, parentView: self.view)
         btn.addTarget(self, action: "popView:", forControlEvents: UIControlEvents.TouchUpInside)
@@ -39,10 +29,58 @@ class CommentTableViewController: UITableViewController, UITextViewDelegate {
         newCommentBtn.frame.origin.y = btn.frame.origin.y
         self.view.addSubview(newCommentBtn)
         
+        let headerView = UIView()
+        headerView.frame = CGRectMake(0, 0, self.view.frame.width, 395)
+        headerView.backgroundColor = .whiteColor()
+
+        
+        
+        let headerTextView = UITextView()
+        headerTextView.frame = CGRectMake(0, btn.frame.origin.y, self.view.frame.width, btn.frame.height)
+        headerTextView.text = "\(self.lecture!.title)"
+        headerTextView.textColor = .blackColor()
+        headerTextView.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0)
+        headerTextView.textAlignment = .Center
+        headerTextView.font = UIFont.boldSystemFontOfSize(26)
+        headerTextView.editable = false
+        headerTextView.scrollEnabled = false
+        
+        headerView.addSubview(headerTextView)
+        
+        self.tableView.tableHeaderView = headerView
+
+        self.tableView.tableFooterView = self.addContactForm()
+        
+
         
         self.aRefeshControl.attributedTitle = NSAttributedString(string: "Pull to refresh")
         self.aRefeshControl.addTarget(self, action: "updateItems:", forControlEvents: UIControlEvents.ValueChanged)
         self.view.addSubview(self.aRefeshControl)
+        
+        
+        
+        
+        
+        let webViewWidth = self.view.frame.width - 20
+        let webViewVideoHeight = 275
+        let embedCode = lecture!.embedCode
+        let cssCode = "<style>body{padding:0px;margin:0px;}iframe{width:\(webViewWidth);height:\(webViewVideoHeight);}</style>"
+        let htmlCode = "<html>\(cssCode)<body>\(embedCode)</body></html>"
+        self.webView.frame = CGRectMake(10, 75, webViewWidth, 275)
+        let url = NSURL(string: "http://codingforentrepreneurs.com")
+        self.webView.loadHTMLString(htmlCode, baseURL: url)
+        self.webView.scrollView.bounces = false
+        self.webView.backgroundColor = .whiteColor()
+        
+        let commentLabel = UILabel()
+        commentLabel.frame = CGRectMake(self.webView.frame.origin.x, self.webView.frame.origin.y + self.webView.frame.height + 10, self.webView.frame.width, 50)
+        commentLabel.text = "Comments"
+        commentLabel.font = UIFont.boldSystemFontOfSize(16)
+    
+        headerView.addSubview(commentLabel)
+        headerView.addSubview(self.webView)
+        
+        
     }
     
     func updateItems(sender:AnyObject) {
