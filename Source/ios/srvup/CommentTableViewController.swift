@@ -28,11 +28,6 @@ class CommentTableViewController: UITableViewController {
         btn.addTarget(self, action: "popView:", forControlEvents: UIControlEvents.TouchUpInside)
         btn.frame.origin.y = btn.frame.origin.y - 10
         self.view.addSubview(btn)
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
     }
     
     func popView(sender:AnyObject) {
@@ -66,8 +61,35 @@ class CommentTableViewController: UITableViewController {
 
         // Configure the cell...
         let text = self.lecture!.commentSet[indexPath.row]["text"].string!
-        cell.textLabel?.text = "\(text)"
+        let user = self.lecture!.commentSet[indexPath.row]["user"].string!
+        let children = self.lecture!.commentSet[indexPath.row]["children"].array
+        var responses = 0
+        if children != nil {
+            responses = children!.count
+        }
+        let newText = "\(text) \n\n via \(user) - \(responses) Responses"
+        cell.textLabel?.text = newText
+        cell.textLabel?.lineBreakMode = NSLineBreakMode.ByWordWrapping
+        cell.textLabel?.numberOfLines = 0
         return cell
+    }
+    
+    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        let text = self.lecture!.commentSet[indexPath.row]["text"].string!
+        let user = self.lecture!.commentSet[indexPath.row]["user"].string!
+        let children = self.lecture!.commentSet[indexPath.row]["children"].array
+        var responses = 0
+        if children != nil {
+            responses = children!.count
+        }
+        let newText = "\(text) \n\n via \(user) - \(responses) Responses"
+        
+        let cellFont = UIFont.boldSystemFontOfSize(14)
+        let attrString = NSAttributedString(string: newText, attributes: [NSFontAttributeName : cellFont])
+        let constraintSize = CGSizeMake(self.tableView.bounds.size.width, CGFloat(MAXFLOAT))
+        let rect = attrString.boundingRectWithSize(constraintSize, options: NSStringDrawingOptions.UsesLineFragmentOrigin, context: nil)
+        
+        return rect.size.height + 50
     }
     
 
