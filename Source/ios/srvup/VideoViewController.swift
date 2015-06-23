@@ -58,9 +58,20 @@ class VideoViewController: UIViewController, UITextViewDelegate {
         self.view.addSubview(self.webView)
         self.view.addSubview(btn)
         self.view.addSubview(addFormBtn)
+        
+        let commentViewBtn = UIButton()
+        commentViewBtn.frame = CGRectMake(self.webView.frame.origin.x, self.webView.frame.origin.y + self.webView.frame.height + 15, self.webView.frame.width, 50)
+        commentViewBtn.setTitle("View/Add Comments", forState: UIControlState.Normal)
+        commentViewBtn.addTarget(self, action: "showComments:", forControlEvents: UIControlEvents.TouchUpInside)
+        commentViewBtn.backgroundColor = .blackColor()
+        commentViewBtn.setTitleColor(UIColor.whiteColor(), forState: UIControlState.Normal)
+        self.view.addSubview(commentViewBtn)
         // Do any additional setup after loading the view.
     }
     
+    func showComments(sender:AnyObject) {
+        self.performSegueWithIdentifier("showComments", sender: self)
+    }
     
     func newComment(sender:AnyObject){
         self.commentView.frame = CGRectMake(0, 0, self.view.frame.width, self.view.frame.height)
@@ -212,14 +223,17 @@ class VideoViewController: UIViewController, UITextViewDelegate {
     }
     
 
-    /*
+    
     // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+        if segue.identifier == "showComments" {
+            let vc = segue.destinationViewController as! CommentTableViewController
+            
+            vc.lecture = self.lecture
+        }
+        
     }
-    */
+    
 
 }
