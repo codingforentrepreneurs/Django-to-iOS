@@ -22,12 +22,46 @@ class CommentTableViewController: UITableViewController {
         headerView.textAlignment = .Center
         headerView.font = UIFont.boldSystemFontOfSize(24)
         self.tableView.tableHeaderView = headerView
+
+        let footerView = UITextView()
+        footerView.frame = CGRectMake(0, 0, self.view.frame.width, self.view.frame.height)
+        footerView.text = "Add New Comment"
+        footerView.textColor = .blackColor()
+        footerView.backgroundColor = .redColor()
+        footerView.textAlignment = .Center
+        footerView.font = UIFont.boldSystemFontOfSize(24)
+        
+        let backTopBtn = UIButton()
+        backTopBtn.frame = CGRectMake(10, 50, self.view.frame.width - 20, 50)
+        backTopBtn.setTitle("BackToTop", forState: UIControlState.Normal)
+        backTopBtn.addTarget(self, action: "backToTop:", forControlEvents: UIControlEvents.TouchUpInside)
+        footerView.addSubview(backTopBtn)
+        
+        
+        self.tableView.tableFooterView = footerView
         
         
         let btn = UINavButton(title: "Back", direction: .Right, parentView: self.view)
         btn.addTarget(self, action: "popView:", forControlEvents: UIControlEvents.TouchUpInside)
         btn.frame.origin.y = btn.frame.origin.y - 10
         self.view.addSubview(btn)
+        
+        let newCommentBtn = UINavButton(title: "New", direction: .Left, parentView: self.view)
+        newCommentBtn.addTarget(self, action: "scrollToFooter:", forControlEvents: UIControlEvents.TouchUpInside)
+        newCommentBtn.frame.origin.y = btn.frame.origin.y
+        self.view.addSubview(newCommentBtn)
+        
+    }
+    
+    func backToTop(sender:AnyObject) {
+        self.tableView.scrollToRowAtIndexPath(NSIndexPath(forRow: 0, inSection: 0), atScrollPosition: UITableViewScrollPosition.Bottom, animated: true)
+    }
+    
+    func scrollToFooter(sender:AnyObject) {
+        let lastRowItem = self.lecture!.commentSet.count - 1
+        let section = 0
+      self.tableView.scrollToRowAtIndexPath(NSIndexPath(forRow: lastRowItem, inSection: section), atScrollPosition: UITableViewScrollPosition.Top, animated: true)
+        
     }
     
     func popView(sender:AnyObject) {
