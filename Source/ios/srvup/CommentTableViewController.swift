@@ -13,6 +13,7 @@ class CommentTableViewController: UITableViewController, UITextViewDelegate {
     var message = UITextView()
     let textArea = UITextView()
     let textAreaPlaceholder = "Your comment here..."
+    let aRefeshControl = UIRefreshControl()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,6 +38,24 @@ class CommentTableViewController: UITableViewController, UITextViewDelegate {
         newCommentBtn.addTarget(self, action: "scrollToFooter:", forControlEvents: UIControlEvents.TouchUpInside)
         newCommentBtn.frame.origin.y = btn.frame.origin.y
         self.view.addSubview(newCommentBtn)
+        
+        
+        self.aRefeshControl.attributedTitle = NSAttributedString(string: "Pull to refresh")
+        self.aRefeshControl.addTarget(self, action: "updateItems:", forControlEvents: UIControlEvents.ValueChanged)
+        self.view.addSubview(self.aRefeshControl)
+    }
+    
+    func updateItems(sender:AnyObject) {
+        self.lecture?.updateLectureComments({ (success) -> Void in
+            if success {
+                println("grabbed comment successfully")
+                self.aRefeshControl.endRefreshing()
+                self.tableView.reloadData()
+            } else {
+                Notification().notify("Error updated data", delay: 2.0, inSpeed: 0.7, outSpeed: 2.5)
+                self.aRefeshControl.endRefreshing()
+            }
+        })
     }
     
     func addContactForm() -> UIView {

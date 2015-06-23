@@ -80,7 +80,38 @@ class Lecture: NSObject {
         self.order = order
         self.embedCode = embedCode
     }
-    
+    func updateLectureComments(completion:(success:Bool)->Void){
+        let keychain = Keychain(service: "com.codingforentrepreneurs.srvup")
+        let token = keychain["token"]
+        if token != nil {
+            var manager = Alamofire.Manager.sharedInstance
+            manager.session.configuration.HTTPAdditionalHeaders = [
+                "Authorization": "JWT \(token!)"
+            ]
+            let getCommentsRequest = manager.request(Method.GET, self.url, parameters:nil, encoding: ParameterEncoding.JSON)
+            getCommentsRequest.responseJSON(options: nil, completionHandler: { (request, response, data, error) -> Void in
+                let statusCode = response?.statusCode
+                if (200 ... 299 ~= statusCode!) && (data != nil) {
+                    let jsonData = JSON(data!)
+                    let commentSet = jsonData["comment_set"].array
+                    if commentSet != nil {
+                        self.commentSet = commentSet!
+                    }
+
+                    completion(success: true)
+                } else {
+                    completion(success: false)
+                    
+                }
+            })
+            
+            
+            
+        } else {
+            println("No token")
+        }
+        
+    }
     func addComment(commentText:String, completion:(success:Bool)->Void){
         let commentCreateUrlString = "http://127.0.0.1:8000/api2/comment/create/"
         let keychain = Keychain(service: "com.codingforentrepreneurs.srvup")
