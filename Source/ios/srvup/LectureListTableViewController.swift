@@ -139,7 +139,7 @@ class LectureListTableViewController: UITableViewController, UIAlertViewDelegate
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        let vc = segue.destinationViewController as! VideoViewController
+        let vc = segue.destinationViewController as! VideoTableViewController
         let indexPath = self.tableView.indexPathForSelectedRow()
         let lecture = self.lectures[indexPath!.row]
         vc.lecture = lecture
