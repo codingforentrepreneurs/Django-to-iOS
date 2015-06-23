@@ -95,13 +95,19 @@ class CommentTableViewController: UITableViewController {
 
         // Configure the cell...
         let text = self.lecture!.commentSet[indexPath.row]["text"].string!
-        let user = self.lecture!.commentSet[indexPath.row]["user"].string!
+        let user = self.lecture!.commentSet[indexPath.row]["user"].string
         let children = self.lecture!.commentSet[indexPath.row]["children"].array
         var responses = 0
         if children != nil {
             responses = children!.count
         }
-        let newText = "\(text) \n\n via \(user) - \(responses) Responses"
+        var newText = ""
+        if user != nil {
+            newText = "\(text) \n\n via \(user!) - \(responses) Responses"
+        } else {
+            newText = "\(text)"
+        }
+        
         cell.textLabel?.text = newText
         cell.textLabel?.lineBreakMode = NSLineBreakMode.ByWordWrapping
         cell.textLabel?.numberOfLines = 0
@@ -110,13 +116,18 @@ class CommentTableViewController: UITableViewController {
     
     override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         let text = self.lecture!.commentSet[indexPath.row]["text"].string!
-        let user = self.lecture!.commentSet[indexPath.row]["user"].string!
+        let user = self.lecture!.commentSet[indexPath.row]["user"].string
         let children = self.lecture!.commentSet[indexPath.row]["children"].array
         var responses = 0
         if children != nil {
             responses = children!.count
         }
-        let newText = "\(text) \n\n via \(user) - \(responses) Responses"
+        var newText = ""
+        if user != nil {
+            newText = "\(text) \n\n via \(user!) - \(responses) Responses"
+        } else {
+            newText = "\(text)"
+        }
         
         let cellFont = UIFont.boldSystemFontOfSize(14)
         let attrString = NSAttributedString(string: newText, attributes: [NSFontAttributeName : cellFont])
