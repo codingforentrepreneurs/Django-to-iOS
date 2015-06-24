@@ -16,14 +16,13 @@ class AuthViewController: UIViewController, UITextFieldDelegate {
     let projectsURL = "http://127.0.0.1:8000/api2/projects/?format=json"
     let keychain = Keychain(service: "com.codingforentrepreneurs.srvup")
     
-    let messageText = UITextView()
+    // let messageText = UITextView()
     let usernameField = UITextField()
     let passwordField = UITextField()
     let submitBtn = UIButton.buttonWithType(.System) as! UIButton
     var projects = [Project]()
     
     override func viewWillAppear(animated: Bool) {
-        self.messageText.text = ""
         self.passwordField.text = ""
         
         let username = self.keychain["user"]
@@ -89,8 +88,8 @@ class AuthViewController: UIViewController, UITextFieldDelegate {
         let offset = CGFloat(20)
         let width = self.view.frame.width - CGFloat(2 * offset)
         let height = CGFloat(50)
-        self.messageText.frame = CGRectMake(offset, 50, width, height)
-        self.messageText.text = ""
+        // self.messageText.frame = CGRectMake(offset, 50, width, height)
+        // self.messageText.text = ""
         
         self.usernameField.frame = CGRectMake(offset, 100, width, height)
         self.usernameField.placeholder = "Username"
@@ -108,8 +107,6 @@ class AuthViewController: UIViewController, UITextFieldDelegate {
         self.submitBtn.frame = CGRectMake(offset, 200, width, height)
         self.submitBtn.setTitle("Submit", forState: .Normal)
         self.submitBtn.addTarget(self, action: "doLogin:", forControlEvents: UIControlEvents.TouchUpInside)
-        
-        self.view.addSubview(self.messageText)
         self.view.addSubview(self.usernameField)
         self.view.addSubview(self.passwordField)
         self.view.addSubview(self.submitBtn)
@@ -132,15 +129,15 @@ class AuthViewController: UIViewController, UITextFieldDelegate {
         if (unCount > 0) && (pwCount > 0) {
             return true
         } else if unCount == 0 {
-            self.messageText.text = "Username is required"
+            Notification().notify("Username is required", delay: 2.5, inSpeed: 0.7, outSpeed: 1.2)
             self.usernameField.becomeFirstResponder()
             return false
         } else if pwCount == 0 {
-            self.messageText.text = "Password is required"
+            Notification().notify("Password is required", delay: 2.5, inSpeed: 0.7, outSpeed: 1.2)
             self.passwordField.becomeFirstResponder()
             return false
         } else {
-            self.messageText.text = "Username and Password are required."
+             Notification().notify("Username and password are required", delay: 2.5, inSpeed: 0.7, outSpeed: 1.2)
             self.usernameField.becomeFirstResponder()
             return false
         }
@@ -148,7 +145,7 @@ class AuthViewController: UIViewController, UITextFieldDelegate {
 
     
     func doLogin(sender: AnyObject) {
-        self.messageText.text = "Loading"
+        // self.messageText.text = "Loading"
         if self.validateLoginForm() {
             self.doAuth(self.usernameField.text, password: self.passwordField.text)
         }
@@ -171,7 +168,6 @@ class AuthViewController: UIViewController, UITextFieldDelegate {
         switch statusCode {
         case 200...299:
             // success: use the data
-            self.messageText.text = "Auth success!"
             let jsonData = JSON(data!)
             // println(jsonData)
             let token = jsonData["token"].string
@@ -198,7 +194,6 @@ class AuthViewController: UIViewController, UITextFieldDelegate {
     }
     
     func getProjects(){
-        self.messageText.text = "Getting..."
         let token = self.keychain["token"]
         if token != nil {
             
@@ -247,16 +242,15 @@ class AuthViewController: UIViewController, UITextFieldDelegate {
             // println(self.projects.count)
             self.performSegueWithIdentifier("showProjects", sender: self)
         case 400...299:
-            self.messageText.text = "Error..."
-        
+             Notification().notify("Loading Error. Please try again later", delay: 2.5, inSpeed: 0.7, outSpeed: 1.2)
+            
         case 500...299:
-            self.messageText.text = "Server Error..."
+            Notification().notify("Server Error. Please try again later", delay: 2.5, inSpeed: 0.7, outSpeed: 1.2)
             
         default:
             println("No projects")
         }
         
-        self.messageText.text = "Loaded..."
         
         
     }
@@ -266,7 +260,6 @@ class AuthViewController: UIViewController, UITextFieldDelegate {
             let vc = segue.destinationViewController as! ProjectTableViewController
             vc.projects = self.projects
         }
-        self.messageText.text = ""
     }
 
 }
