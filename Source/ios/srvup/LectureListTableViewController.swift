@@ -20,6 +20,23 @@ class LectureListTableViewController: UITableViewController, UIAlertViewDelegate
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.tableView.separatorStyle = UITableViewCellSeparatorStyle.None
+        
+        
+        let image = UIImage(named: "pattern")
+        let bgImage = UIColor(patternImage: image!)
+        // self.view.backgroundColor = bgImage
+        //rgba(0, 88, 128, 0.92)
+        let bgView = UIView()
+        bgView.frame = self.view.frame
+        bgView.backgroundColor = bgImage
+        bgView.layer.zPosition = -100
+        bgView.userInteractionEnabled = false
+        self.view.addSubview(bgView)
+        self.view.backgroundColor = UIColor(red: 0, green: 88/255.0, blue: 128/255.0, alpha: 1.0)
+        
+        
+        
         self.headerView.frame = CGRectMake(0, 0, self.view.frame.width, 150)
         self.headerView.backgroundColor = .blackColor()
         
@@ -149,7 +166,11 @@ class LectureListTableViewController: UITableViewController, UIAlertViewDelegate
         let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as! UITableViewCell
 
         cell.textLabel?.text = self.lectures[indexPath.row].title
-
+        cell.textLabel?.textAlignment = .Center
+        let sepLine = UIView()
+        sepLine.frame = CGRectMake(20, cell.contentView.frame.height, self.view.frame.width - 40, 0.5)
+        sepLine.backgroundColor = .grayColor()
+        cell.contentView.addSubview(sepLine)
         return cell
     }
     
