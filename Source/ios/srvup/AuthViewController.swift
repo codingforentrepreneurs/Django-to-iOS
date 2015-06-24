@@ -65,6 +65,17 @@ class AuthViewController: UIViewController, UITextFieldDelegate {
     
         self.addLoginForm()
         self.navigationController?.navigationBarHidden = true
+        let image = UIImage(named: "pattern")
+        let bgImage = UIColor(patternImage: image!)
+        // self.view.backgroundColor = bgImage
+        //rgba(0, 88, 128, 0.92)
+        let bgView = UIView()
+        bgView.frame = self.view.frame
+        bgView.backgroundColor = bgImage
+        bgView.layer.zPosition = -100
+        bgView.userInteractionEnabled = false
+        self.view.addSubview(bgView)
+        self.view.backgroundColor = UIColor(red: 0, green: 88/255.0, blue: 128/255.0, alpha: 1.0)
     }
     
 
