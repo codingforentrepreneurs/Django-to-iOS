@@ -225,6 +225,10 @@ class AuthViewController: UIViewController, UITextFieldDelegate {
                 if subJSON["image"] != nil {
                     project.imageUrlString = subJSON["image"].string!
                 }
+                
+                if subJSON["description"] != nil {
+                    project.projectDescription = subJSON["description"].string!
+                }
                 newProjects.append(project)
             }
             self.projects = newProjects
