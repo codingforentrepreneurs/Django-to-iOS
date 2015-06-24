@@ -288,6 +288,10 @@ class VideoTableViewController: UITableViewController , UITextViewDelegate {
         return rect.size.height + 50
     }
     
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        tableView.deselectRowAtIndexPath(indexPath, animated: true)
+    }
+    
     
     /*
     // Override to support conditional editing of the table view.

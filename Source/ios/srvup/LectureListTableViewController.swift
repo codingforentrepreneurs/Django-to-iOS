@@ -68,7 +68,10 @@ class LectureListTableViewController: UITableViewController, UIAlertViewDelegate
     }
     
     func alertView(alertView: UIAlertView, didDismissWithButtonIndex buttonIndex: Int) {
-        self.dismissViewControllerAnimated(true, completion: nil)
+        
+        // self.navigationController?.popViewControllerAnimated(true)
+        // self.navigationController?.popToRootViewControllerAnimated(true)
+        // self.dismissViewControllerAnimated(true, completion: nil)
     }
 
     override func didReceiveMemoryWarning() {
@@ -97,6 +100,10 @@ class LectureListTableViewController: UITableViewController, UIAlertViewDelegate
         cell.textLabel?.text = self.lectures[indexPath.row].title
 
         return cell
+    }
+    
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        tableView.deselectRowAtIndexPath(indexPath, animated: true)
     }
 
 
