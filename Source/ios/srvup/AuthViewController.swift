@@ -16,7 +16,8 @@ class AuthViewController: UIViewController, UITextFieldDelegate {
     let projectsURL = "http://127.0.0.1:8000/api2/projects/?format=json"
     let keychain = Keychain(service: "com.codingforentrepreneurs.srvup")
     
-    // let messageText = UITextView()
+   
+    let activityLoader = UIActivityIndicatorView()
     let usernameField = UITextField()
     let passwordField = UITextField()
     let submitBtn = UIButton.buttonWithType(.System) as! UIButton
@@ -75,6 +76,19 @@ class AuthViewController: UIViewController, UITextFieldDelegate {
         bgView.userInteractionEnabled = false
         self.view.addSubview(bgView)
         self.view.backgroundColor = UIColor(red: 0, green: 88/255.0, blue: 128/255.0, alpha: 1.0)
+        
+        self.activityLoader.center = self.view.center
+        self.view.addSubview(self.activityLoader)
+        
+         let brandLabel = UILabel()
+        brandLabel.text = "srvup"
+        brandLabel.textColor = .whiteColor()
+        brandLabel.font = UIFont.boldSystemFontOfSize(26)
+        brandLabel.frame = CGRectMake(0, 50, self.view.frame.width, 40)
+        brandLabel.textAlignment = .Center
+        
+        self.view.addSubview(brandLabel)
+        
     }
     
 
@@ -91,22 +105,31 @@ class AuthViewController: UIViewController, UITextFieldDelegate {
         // self.messageText.frame = CGRectMake(offset, 50, width, height)
         // self.messageText.text = ""
         
+        
+        
         self.usernameField.frame = CGRectMake(offset, 100, width, height)
         self.usernameField.placeholder = "Username"
         self.usernameField.returnKeyType = UIReturnKeyType.Next
+        self.usernameField.backgroundColor = .whiteColor()
         self.usernameField.delegate = self
 //        if count(self.usernameField.text) == 0 {
 //             self.usernameField.becomeFirstResponder()
 //        }
+        self.usernameField.textAlignment = .Center
         
-        self.passwordField.frame = CGRectMake(offset, 150, width, height)
+        self.passwordField.frame = CGRectMake(offset, self.usernameField.frame.origin.y + height + 2.5, width, height)
         self.passwordField.placeholder = "Password"
         self.passwordField.secureTextEntry = true
         self.passwordField.delegate = self
+        self.passwordField.backgroundColor = .whiteColor()
+        self.passwordField.textAlignment = .Center
         
-        self.submitBtn.frame = CGRectMake(offset, 200, width, height)
-        self.submitBtn.setTitle("Submit", forState: .Normal)
+        
+        self.submitBtn.frame = CGRectMake(offset, self.passwordField.frame.origin.y + height + 15, width, height)
+        self.submitBtn.setTitle("Login", forState: .Normal)
         self.submitBtn.addTarget(self, action: "doLogin:", forControlEvents: UIControlEvents.TouchUpInside)
+        self.submitBtn.backgroundColor = .whiteColor()
+        
         self.view.addSubview(self.usernameField)
         self.view.addSubview(self.passwordField)
         self.view.addSubview(self.submitBtn)
@@ -154,7 +177,7 @@ class AuthViewController: UIViewController, UITextFieldDelegate {
     func doAuth(username:String, password:String) {
         let params = ["username": username, "password": password]
         var authToken = Alamofire.request(Method.POST, self.authTokenUrl, parameters: params)
-        
+        self.activityLoader.startAnimating()
         authToken.responseJSON(options: nil, completionHandler: authRequestIsComplete)
         
     }
@@ -184,12 +207,24 @@ class AuthViewController: UIViewController, UITextFieldDelegate {
             self.getProjects()
             
         case 400...499:
-            println("Server responded no")
+            let jsonData = JSON(data!)
+            let errorArray = jsonData["non_field_errors"].array
+            var currentString = ""
+            if errorArray != nil {
+                for i in errorArray! {
+                    currentString = currentString + "\(i)"
+                }
+            }
+            Notification().notify(currentString, delay: 2.5, inSpeed: 0.7, outSpeed: 1.2)
+            // println("Server responded no \(currentString)")
         case 500...599:
-            println("Server Error")
+            Notification().notify("Server Error. Please try again later", delay: 2.5, inSpeed: 0.7, outSpeed: 1.2)
         default:
-            println("There was an error with your request")
+            Notification().notify("There was an error with your request. Please try again later", delay: 2.5, inSpeed: 0.7, outSpeed: 1.2)
+
         }
+        
+        self.activityLoader.stopAnimating()
         
     }
     
@@ -203,9 +238,9 @@ class AuthViewController: UIViewController, UITextFieldDelegate {
             ]
             
             var getProjectsRequest = manager.request(Method.GET, self.projectsURL)
-            
+            self.activityLoader.startAnimating()
             getProjectsRequest.responseJSON(options: nil, completionHandler:projectsReceived)
-        
+            
         } else {
             println("No token")
         }
@@ -214,7 +249,6 @@ class AuthViewController: UIViewController, UITextFieldDelegate {
     func projectsReceived(request:NSURLRequest, response:NSHTTPURLResponse?, data:AnyObject?, error:NSError?) -> Void {
         
         let statusCode = response!.statusCode
-        // println(statusCode)
         
         switch statusCode {
         
@@ -238,8 +272,6 @@ class AuthViewController: UIViewController, UITextFieldDelegate {
                 newProjects.append(project)
             }
             self.projects = newProjects
-            // println(self.projects)
-            // println(self.projects.count)
             self.performSegueWithIdentifier("showProjects", sender: self)
         case 400...299:
              Notification().notify("Loading Error. Please try again later", delay: 2.5, inSpeed: 0.7, outSpeed: 1.2)
@@ -248,8 +280,9 @@ class AuthViewController: UIViewController, UITextFieldDelegate {
             Notification().notify("Server Error. Please try again later", delay: 2.5, inSpeed: 0.7, outSpeed: 1.2)
             
         default:
-            println("No projects")
+            Notification().notify("There was an error with your request. Please try again later", delay: 2.5, inSpeed: 0.7, outSpeed: 1.2)
         }
+        self.activityLoader.stopAnimating()
         
         
         
