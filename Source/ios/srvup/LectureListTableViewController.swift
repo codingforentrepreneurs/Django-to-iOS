@@ -38,33 +38,45 @@ class LectureListTableViewController: UITableViewController, UIAlertViewDelegate
         }
         
         let des = self.project!.projectDescription
+        let xOffest = CGFloat(20.0)
         let projectDesText = UITextView()
         if des != nil && des != "" {
             projectDesText.text = des!
        
-        let cellFont = UIFont.systemFontOfSize(18)
-        projectDesText.font = cellFont
+            let cellFont = UIFont.systemFontOfSize(18)
+            projectDesText.font = cellFont
         
-        let attrString = NSAttributedString(string: projectDesText.text, attributes: [NSFontAttributeName : cellFont])
-        let constraintSize = CGSizeMake(self.tableView.bounds.size.width, CGFloat(MAXFLOAT))
-        let rect = attrString.boundingRectWithSize(constraintSize, options: NSStringDrawingOptions.UsesLineFragmentOrigin, context: nil)
+            let attrString = NSAttributedString(string: projectDesText.text, attributes: [NSFontAttributeName : cellFont])
+            let constraintSize = CGSizeMake(self.tableView.bounds.size.width, CGFloat(MAXFLOAT))
+            let rect = attrString.boundingRectWithSize(constraintSize, options: NSStringDrawingOptions.UsesLineFragmentOrigin, context: nil)
         
-        let xOffest = CGFloat(20.0)
-        let currentHeaderViewHY = self.headerView.frame.height + self.headerView.frame.origin.y + 5
-        projectDesText.frame = CGRectMake(xOffest, currentHeaderViewHY, self.headerView.frame.width - (2 * xOffest), rect.size.height)
-        projectDesText.editable = false
-        projectDesText.scrollEnabled = false
-        projectDesText.textColor = .whiteColor()
-        projectDesText.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0)
         
-        self.headerView.addSubview(projectDesText)
-        self.headerView.frame = CGRectMake(self.headerView.frame.origin.x, self.headerView.frame.origin.y, self.headerView.frame.width, self.headerView.frame.height + projectDesText.frame.height + 20)
+            let currentHeaderViewHY = self.headerView.frame.height + self.headerView.frame.origin.y
+            projectDesText.frame = CGRectMake(xOffest, currentHeaderViewHY, self.headerView.frame.width - (2 * xOffest), rect.size.height)
+            projectDesText.editable = false
+            projectDesText.scrollEnabled = false
+            projectDesText.textColor = .whiteColor()
+            projectDesText.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0)
+        
+           self.headerView.addSubview(projectDesText)
+           self.headerView.frame = CGRectMake(self.headerView.frame.origin.x, self.headerView.frame.origin.y, self.headerView.frame.width, self.headerView.frame.height + projectDesText.frame.height + 20)
         
          } else {
             projectDesText.text = ""
         }
 
-
+        
+        let shareBtn = UIButton()
+        let newHeaderViewHY = self.headerView.frame.height + self.headerView.frame.origin.y
+        shareBtn.frame = CGRectMake(xOffest, newHeaderViewHY, self.headerView.frame.width - (2 * xOffest), 30)
+        shareBtn.backgroundColor = UIColor(red: 59/255.0, green: 89/255.0, blue: 152/255.0, alpha: 1)
+        shareBtn.setTitle("Share on Facebook", forState: UIControlState.Normal)
+        shareBtn.setTitleColor(UIColor.whiteColor(), forState: UIControlState.Normal)
+        shareBtn.addTarget(self, action: "openShareLink:", forControlEvents: UIControlEvents.TouchUpInside)
+        
+        
+        self.headerView.frame = CGRectMake(self.headerView.frame.origin.x, self.headerView.frame.origin.y, self.headerView.frame.width, self.headerView.frame.height + shareBtn.frame.height + 10)
+        self.headerView.addSubview(shareBtn)
         
         
         let btn = UINavButton(title: "Back", direction: UIButtonDirection.Right, parentView: self.tableView)
@@ -88,6 +100,17 @@ class LectureListTableViewController: UITableViewController, UIAlertViewDelegate
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+    }
+    
+    func openShareLink(sender:AnyObject){
+        let projectSlug = self.project!.slug
+        let fblink = "https://www.facebook.com/sharer/sharer.php?u="
+        let baseUrlString = "http://codingforentrepreneurs.com/"
+        let fullUrlString = "\(fblink)\(baseUrlString)/projects/\(projectSlug)"
+        let shareUrl = NSURL(string: fullUrlString)
+        
+        let application = UIApplication.sharedApplication()
+        application.openURL(shareUrl!)
     }
     
     func popView(sender:AnyObject) {

@@ -217,7 +217,7 @@ class AuthViewController: UIViewController, UITextFieldDelegate {
             let results = jsonData["results"]
             var newProjects = [Project]()
             for (index:String, subJSON:JSON) in results {
-                let project = Project(title: subJSON["title"].string!, url: subJSON["url"].string!, id: subJSON["id"].int!)
+                let project = Project(title: subJSON["title"].string!, url: subJSON["url"].string!, id: subJSON["id"].int!, slug: subJSON["slug"].string!)
                 
                 if subJSON["video_set"].array != nil {
                     project.createLectures(subJSON["video_set"].array!)

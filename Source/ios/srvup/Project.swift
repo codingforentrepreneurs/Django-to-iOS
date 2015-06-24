@@ -16,16 +16,17 @@ class Project:NSObject {
     var title:String
     var url:String
     var id:Int
-    var slug:String?
+    var slug:String
     var projectDescription: String?
     var imageUrlString: String?
     // var videoSet = [JSON]()
     var lectureSet = [Lecture]()
     
-    init(title:String, url:String, id:Int) {
+    init(title:String, url:String, id:Int, slug:String) {
         self.title = title
         self.url = url
         self.id = id
+        self.slug = slug
     }
     
     func image() -> UIImage? {
