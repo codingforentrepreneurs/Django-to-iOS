@@ -1,16 +1,20 @@
 //
-//  VideoTableViewController.swift
+//  ResponseTableViewController.swift
 //  srvup
 //
-//  Created by Justin Mitchel on 6/23/15.
+//  Created by Justin Mitchel on 6/25/15.
 //  Copyright (c) 2015 Coding for Entrepreneurs. All rights reserved.
 //
 
 import UIKit
+import SwiftyJSON
 
-class VideoTableViewController: UITableViewController , UITextViewDelegate {
+class ResponseTableViewController: UITableViewController, UITextViewDelegate {
     var lecture: Lecture?
-    var webView = UIWebView()
+//    var webView = UIWebView()
+    var commentText:String?
+    var commentUser:String?
+    var commentChidren = [JSON]()
     var message = UITextView()
     let textArea = UITextView()
     let textAreaPlaceholder = "Your comment here..."
@@ -24,7 +28,7 @@ class VideoTableViewController: UITableViewController , UITextViewDelegate {
         btn.frame.origin.y = btn.frame.origin.y - 10
         self.view.addSubview(btn)
         
-        let newCommentBtn = UINavButton(title: "New", direction: .Left, parentView: self.view)
+        let newCommentBtn = UINavButton(title: "Reply", direction: .Left, parentView: self.view)
         newCommentBtn.addTarget(self, action: "scrollToFooter:", forControlEvents: UIControlEvents.TouchUpInside)
         newCommentBtn.frame.origin.y = btn.frame.origin.y
         self.view.addSubview(newCommentBtn)
@@ -37,7 +41,7 @@ class VideoTableViewController: UITableViewController , UITextViewDelegate {
         
         let headerTextView = UITextView()
         headerTextView.frame = CGRectMake(0, btn.frame.origin.y, self.view.frame.width, btn.frame.height)
-        headerTextView.text = "\(self.lecture!.title)"
+        headerTextView.text = "Reply to comment"
         headerTextView.textColor = .blackColor()
         headerTextView.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0)
         headerTextView.textAlignment = .Center
@@ -60,26 +64,15 @@ class VideoTableViewController: UITableViewController , UITextViewDelegate {
         
         
         
-        
-        let webViewWidth = self.view.frame.width - 20
-        let webViewVideoHeight = 275
-        let embedCode = lecture!.embedCode
-        let cssCode = "<style>body{padding:0px;margin:0px;}iframe{width:\(webViewWidth);height:\(webViewVideoHeight);}</style>"
-        let htmlCode = "<html>\(cssCode)<body>\(embedCode)</body></html>"
-        self.webView.frame = CGRectMake(10, 75, webViewWidth, 275)
-        let url = NSURL(string: "http://codingforentrepreneurs.com")
-        self.webView.loadHTMLString(htmlCode, baseURL: url)
-        self.webView.scrollView.bounces = false
-        self.webView.backgroundColor = .whiteColor()
-        
+    
         let commentLabel = UILabel()
-        commentLabel.frame = CGRectMake(self.webView.frame.origin.x, self.webView.frame.origin.y + self.webView.frame.height + 10, self.webView.frame.width, 50)
+//        commentLabel.frame = CGRectMake(self.webView.frame.origin.x, self.webView.frame.origin.y + self.webView.frame.height + 10, self.webView.frame.width, 50)
         commentLabel.text = "Comments"
         commentLabel.font = UIFont.boldSystemFontOfSize(16)
         
         headerView.addSubview(commentLabel)
-        headerView.addSubview(self.webView)
-        
+//        headerView.addSubview(self.webView)
+//        
         
     }
     
@@ -237,7 +230,7 @@ class VideoTableViewController: UITableViewController , UITextViewDelegate {
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete method implementation.
         // Return the number of rows in the section.
-        return self.lecture!.commentSet.count
+        return self.commentChidren.count
     }
     
     
@@ -245,16 +238,12 @@ class VideoTableViewController: UITableViewController , UITextViewDelegate {
         let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as! UITableViewCell
         
         // Configure the cell...
-        let text = self.lecture!.commentSet[indexPath.row]["text"].string!
-        let user = self.lecture!.commentSet[indexPath.row]["user"].string
-        let children = self.lecture!.commentSet[indexPath.row]["children"].array
-        var responses = 0
-        if children != nil {
-            responses = children!.count
-        }
+        let text = self.commentChidren[indexPath.row]["text"].string!
+        let user = self.commentChidren[indexPath.row]["user"].string
+
         var newText = ""
         if user != nil {
-            newText = "\(text) \n\n via \(user!) - \(responses) Responses"
+            newText = "\(text) \n\nvia \(user!)"
         } else {
             newText = "\(text)"
         }
@@ -266,16 +255,12 @@ class VideoTableViewController: UITableViewController , UITextViewDelegate {
     }
     
     override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        let text = self.lecture!.commentSet[indexPath.row]["text"].string!
-        let user = self.lecture!.commentSet[indexPath.row]["user"].string
-        let children = self.lecture!.commentSet[indexPath.row]["children"].array
-        var responses = 0
-        if children != nil {
-            responses = children!.count
-        }
+        let text = self.commentChidren[indexPath.row]["text"].string!
+        let user = self.commentChidren[indexPath.row]["user"].string
+        
         var newText = ""
         if user != nil {
-            newText = "\(text) \n\n via \(user!) - \(responses) Responses"
+            newText = "\(text) \n\nvia \(user!)"
         } else {
             newText = "\(text)"
         }
@@ -290,66 +275,51 @@ class VideoTableViewController: UITableViewController , UITextViewDelegate {
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
-    }
-    
-    
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-    // Return NO if you do not want the specified item to be editable.
-    return true
-    }
-    */
-    
-    /*
-    // Override to support editing the table view.
-    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-    if editingStyle == .Delete {
-    // Delete the row from the data source
-    tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
-    } else if editingStyle == .Insert {
-    // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }
-    }
-    */
-    
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(tableView: UITableView, moveRowAtIndexPath fromIndexPath: NSIndexPath, toIndexPath: NSIndexPath) {
-    
-    }
-    */
-    
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(tableView: UITableView, canMoveRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-    // Return NO if you do not want the item to be re-orderable.
-    return true
-    }
-    */
-    
-    
-    // MARK: - Navigation
-    
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if segue.identifier == "showCommentResponses" {
-            let vc = segue.destinationViewController as! ResponseTableViewController
-            let indexPath = self.tableView.indexPathForSelectedRow()!
-            
-            let text = self.lecture!.commentSet[indexPath.row]["text"].string!
-            let user = self.lecture!.commentSet[indexPath.row]["user"].string
-            let children = self.lecture!.commentSet[indexPath.row]["children"].array
-            
-            vc.commentText = text
-            vc.commentUser = user
-            if children != nil {
-                vc.commentChidren = children!
-            }
-            
-            
-        }
-    }
-    
-    
+}
+
+
+/*
+// Override to support conditional editing of the table view.
+override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+// Return NO if you do not want the specified item to be editable.
+return true
+}
+*/
+
+/*
+// Override to support editing the table view.
+override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+if editingStyle == .Delete {
+// Delete the row from the data source
+tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
+} else if editingStyle == .Insert {
+// Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
+}
+}
+*/
+
+/*
+// Override to support rearranging the table view.
+override func tableView(tableView: UITableView, moveRowAtIndexPath fromIndexPath: NSIndexPath, toIndexPath: NSIndexPath) {
+
+}
+*/
+
+/*
+// Override to support conditional rearranging of the table view.
+override func tableView(tableView: UITableView, canMoveRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+// Return NO if you do not want the item to be re-orderable.
+return true
+}
+*/
+
+/*
+// MARK: - Navigation
+
+// In a storyboard-based application, you will often want to do a little preparation before navigation
+override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+// Get the new view controller using [segue destinationViewController].
+// Pass the selected object to the new view controller.
+}
+*/
 }
