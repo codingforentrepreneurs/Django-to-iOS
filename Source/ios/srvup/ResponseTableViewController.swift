@@ -58,9 +58,44 @@ class ResponseTableViewController: UITableViewController, UITextViewDelegate {
         let commentText = UITextView()
         commentText.frame = CGRectMake(0, headerTextView.frame.origin.y + headerTextView.frame.height + offset, headerTextView.frame.width, 30)
         commentText.text = self.commentText
+        commentText.backgroundColor = UIColor(red: 242/255.0, green: 242/255.0, blue: 242/255.0, alpha: 1.0)
+        commentText.font = UIFont.systemFontOfSize(16)
+        
+        let contentInset = UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 10)
+        commentText.contentInset = contentInset
+        commentText.editable = true
+        commentText.scrollEnabled = false
+        commentText.sizeToFit()
+        commentText.frame.size.width = headerView.frame.width
         
         headerView.addSubview(commentText)
         
+        let viaText = UITextView()
+        viaText.frame = CGRectMake(0, commentText.frame.origin.y + commentText.frame.height, self.view.frame.width, 30)
+        viaText.text = "via \(self.commentUser!)"
+        viaText.textAlignment = .Right
+        viaText.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 10)
+        viaText.editable = false
+        viaText.scrollEnabled = false
+        
+        headerView.addSubview(viaText)
+        
+        var reponseTextHeight = CGFloat(0)
+        
+        if self.commentChidren.count > 0 {
+            let reponseText = UITextView()
+            reponseText.frame = CGRectMake(0, viaText.frame.origin.y + viaText.frame.height + offset, self.view.frame.width, 30)
+            reponseText.text = "Replies"
+            reponseText.font = UIFont.boldSystemFontOfSize(16)
+            reponseText.contentInset = contentInset
+            reponseText.editable = false
+            reponseText.scrollEnabled = false
+            reponseTextHeight = reponseText.frame.height
+            
+            headerView.addSubview(reponseText)
+        }
+ 
+        headerView.frame.size.height = btn.frame.height + commentText.frame.height + btn.frame.origin.y + (offset * 3) + viaText.frame.height + reponseTextHeight
         
         self.tableView.tableHeaderView = headerView
         
