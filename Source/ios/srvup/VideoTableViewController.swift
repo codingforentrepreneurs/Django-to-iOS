@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SwiftyJSON
 
 class VideoTableViewController: UITableViewController , UITextViewDelegate {
     var lecture: Lecture?
@@ -181,7 +182,7 @@ class VideoTableViewController: UITableViewController , UITextViewDelegate {
         }
     }
     
-    func addCommentCompletionHandler(success:Bool) -> Void {
+    func addCommentCompletionHandler(success:Bool, dataSent:JSON?) -> Void {
         if !success {
             self.scrollToFooter(self)
             Notification().notify("Failed to add", delay: 2.5, inSpeed: 0.7, outSpeed: 1.2)
@@ -340,12 +341,15 @@ class VideoTableViewController: UITableViewController , UITextViewDelegate {
             let text = self.lecture!.commentSet[indexPath.row]["text"].string!
             let user = self.lecture!.commentSet[indexPath.row]["user"].string
             let children = self.lecture!.commentSet[indexPath.row]["children"].array
+            let commentID = self.lecture!.commentSet[indexPath.row]["id"].int!
             
             vc.commentText = text
             vc.commentUser = user
             if children != nil {
                 vc.commentChidren = children!
             }
+            vc.lecture = self.lecture!
+            vc.commentID = commentID
             
             
         }

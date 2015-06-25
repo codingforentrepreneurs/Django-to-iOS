@@ -13,6 +13,7 @@ class ResponseTableViewController: UITableViewController, UITextViewDelegate {
     var lecture: Lecture?
 //    var webView = UIWebView()
     var commentText:String?
+    var commentID:Int?
     var commentUser:String?
     var commentChidren = [JSON]()
     var message = UITextView()
@@ -50,6 +51,16 @@ class ResponseTableViewController: UITableViewController, UITextViewDelegate {
         headerTextView.scrollEnabled = false
         
         headerView.addSubview(headerTextView)
+        
+        
+        let offset = CGFloat(10)
+        
+        let commentText = UITextView()
+        commentText.frame = CGRectMake(0, headerTextView.frame.origin.y + headerTextView.frame.height + offset, headerTextView.frame.width, 30)
+        commentText.text = self.commentText
+        
+        headerView.addSubview(commentText)
+        
         
         self.tableView.tableHeaderView = headerView
         
@@ -161,7 +172,7 @@ class ResponseTableViewController: UITableViewController, UITextViewDelegate {
         case 1:
             if self.textArea.text != "" && self.textArea.text != self.textAreaPlaceholder {
                 self.textArea.endEditing(true)
-                self.lecture!.addComment(self.textArea.text, parent:nil, completion: addCommentCompletionHandler)
+                self.lecture!.addComment(self.textArea.text, parent:self.commentID!, completion: addCommentCompletionHandler)
                 self.textArea.text = self.textAreaPlaceholder
             } else {
                 self.message.text = "A comment is required."
@@ -174,12 +185,14 @@ class ResponseTableViewController: UITableViewController, UITextViewDelegate {
         }
     }
     
-    func addCommentCompletionHandler(success:Bool) -> Void {
+    func addCommentCompletionHandler(success:Bool, dataSent:JSON?) -> Void {
         if !success {
             self.scrollToFooter(self)
             Notification().notify("Failed to add", delay: 2.5, inSpeed: 0.7, outSpeed: 1.2)
             
         } else {
+            self.commentChidren.insert(dataSent!, atIndex: 0)
+            
             Notification().notify("Message Added", delay: 1.5, inSpeed: 0.5, outSpeed: 1.0)
             self.scrollToTop({ (success) -> Void in
                 if success{

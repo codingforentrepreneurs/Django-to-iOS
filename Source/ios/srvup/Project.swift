@@ -113,10 +113,11 @@ class Lecture: NSObject {
         }
         
     }
-    func addComment(commentText:String, parent:Int?, completion:(success:Bool)->Void){
+    func addComment(commentText:String, parent:Int?, completion:(success:Bool, dataSent:JSON?)->Void){
         let commentCreateUrlString = "http://127.0.0.1:8000/api2/comment/create/"
         let keychain = Keychain(service: "com.codingforentrepreneurs.srvup")
         let token = keychain["token"]
+        let user = keychain["user"]
         let userid = keychain["userid"]
         if token != nil && userid != nil {
             var manager = Alamofire.Manager.sharedInstance
@@ -140,9 +141,10 @@ class Lecture: NSObject {
                     let jsonData = JSON(data!)
                     self.commentSet.insert(jsonData, atIndex: 0)
                     // self.commentSet.append(jsonData)
-                    completion(success: true)
+                    let newData = ["text": "\(commentText)", "user":"\(user!)"]
+                    completion(success: true, dataSent:JSON(newData))
                 } else {
-                    completion(success: false)
+                    completion(success: false, dataSent:nil)
                     
                 }
             })
