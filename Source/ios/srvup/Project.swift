@@ -113,7 +113,7 @@ class Lecture: NSObject {
         }
         
     }
-    func addComment(commentText:String, completion:(success:Bool)->Void){
+    func addComment(commentText:String, parent:Int?, completion:(success:Bool)->Void){
         let commentCreateUrlString = "http://127.0.0.1:8000/api2/comment/create/"
         let keychain = Keychain(service: "com.codingforentrepreneurs.srvup")
         let token = keychain["token"]
@@ -123,7 +123,12 @@ class Lecture: NSObject {
             manager.session.configuration.HTTPAdditionalHeaders = [
                 "Authorization": "JWT \(token!)"
             ]
-            let params = ["text" : commentText, "video": "\(self.id)", "user": "\(userid!)"]
+            
+            var params = ["text" : commentText, "video": "\(self.id)", "user": "\(userid!)"]
+            
+            if parent != nil {
+                params = ["text" : commentText, "video": "\(self.id)", "user": "\(userid!)", "parent": "\(parent!)"]
+            }
             
             let addCommentRequest = manager.request(Method.POST, commentCreateUrlString, parameters:params, encoding: ParameterEncoding.JSON)
             println(self.commentSet.count)

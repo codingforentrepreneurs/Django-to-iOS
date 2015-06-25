@@ -16,16 +16,12 @@
 		0F0E02231B2DF5EE00D35686 /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F0E02201B2DF5EE00D35686 /* SwiftyJSON.framework */; };
 		0F0E02241B2DF5EE00D35686 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F0E02211B2DF5EE00D35686 /* Alamofire.framework */; };
 		0F0E02251B2DF5EE00D35686 /* KeychainAccess.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F0E02221B2DF5EE00D35686 /* KeychainAccess.framework */; };
-		0F0E02291B2F1A2000D35686 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F0E02281B2F1A2000D35686 /* ViewController.swift */; };
-		0F0E022B1B2F3B9200D35686 /* ProjectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F0E022A1B2F3B9200D35686 /* ProjectViewController.swift */; };
 		0F0E022D1B2F3CDA00D35686 /* Project.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F0E022C1B2F3CDA00D35686 /* Project.swift */; };
 		0F584BD41B30673700C1FD47 /* ProjectTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F584BD31B30673700C1FD47 /* ProjectTableViewController.swift */; };
 		0F584BD91B307FDE00C1FD47 /* ProjectTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F584BD81B307FDE00C1FD47 /* ProjectTableCell.swift */; };
 		0F584BDD1B30875900C1FD47 /* LectureListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F584BDC1B30875900C1FD47 /* LectureListTableViewController.swift */; };
-		0F584BDF1B31AEE400C1FD47 /* VideoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F584BDE1B31AEE400C1FD47 /* VideoViewController.swift */; };
 		0F584BE51B33106100C1FD47 /* UINavButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F584BE41B33106100C1FD47 /* UINavButton.swift */; };
 		0F584BE91B3343C300C1FD47 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F584BE81B3343C300C1FD47 /* User.swift */; };
-		0FADB4CD1B39B2030029959F /* CommentTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FADB4CC1B39B2030029959F /* CommentTableViewController.swift */; };
 		0FADB4D11B39D1060029959F /* Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FADB4D01B39D1060029959F /* Notification.swift */; };
 		0FADB4D31B39E71C0029959F /* VideoTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FADB4D21B39E71C0029959F /* VideoTableViewController.swift */; };
 /* End PBXBuildFile section */
@@ -54,16 +50,12 @@
 		0F0E02201B2DF5EE00D35686 /* SwiftyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyJSON.framework; path = Carthage/Build/iOS/SwiftyJSON.framework; sourceTree = "<group>"; };
 		0F0E02211B2DF5EE00D35686 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
 		0F0E02221B2DF5EE00D35686 /* KeychainAccess.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = KeychainAccess.framework; path = Carthage/Build/iOS/KeychainAccess.framework; sourceTree = "<group>"; };
-		0F0E02281B2F1A2000D35686 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		0F0E022A1B2F3B9200D35686 /* ProjectViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectViewController.swift; sourceTree = "<group>"; };
 		0F0E022C1B2F3CDA00D35686 /* Project.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Project.swift; sourceTree = "<group>"; };
 		0F584BD31B30673700C1FD47 /* ProjectTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectTableViewController.swift; sourceTree = "<group>"; };
 		0F584BD81B307FDE00C1FD47 /* ProjectTableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectTableCell.swift; sourceTree = "<group>"; };
 		0F584BDC1B30875900C1FD47 /* LectureListTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LectureListTableViewController.swift; sourceTree = "<group>"; };
-		0F584BDE1B31AEE400C1FD47 /* VideoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoViewController.swift; sourceTree = "<group>"; };
 		0F584BE41B33106100C1FD47 /* UINavButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UINavButton.swift; sourceTree = "<group>"; };
 		0F584BE81B3343C300C1FD47 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
-		0FADB4CC1B39B2030029959F /* CommentTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommentTableViewController.swift; sourceTree = "<group>"; };
 		0FADB4D01B39D1060029959F /* Notification.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Notification.swift; sourceTree = "<group>"; };
 		0FADB4D21B39E71C0029959F /* VideoTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -125,7 +117,6 @@
 				0F0E02071B2DF3B500D35686 /* Images.xcassets */,
 				0F0E02091B2DF3B500D35686 /* LaunchScreen.xib */,
 				0F0E01FE1B2DF3B500D35686 /* Supporting Files */,
-				0FADB4D41B39E7A90029959F /* OldFiles */,
 			);
 			path = srvup;
 			sourceTree = "<group>";
@@ -163,17 +154,6 @@
 				0F0E02221B2DF5EE00D35686 /* KeychainAccess.framework */,
 			);
 			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		0FADB4D41B39E7A90029959F /* OldFiles */ = {
-			isa = PBXGroup;
-			children = (
-				0F0E022A1B2F3B9200D35686 /* ProjectViewController.swift */,
-				0F584BDE1B31AEE400C1FD47 /* VideoViewController.swift */,
-				0F0E02281B2F1A2000D35686 /* ViewController.swift */,
-				0FADB4CC1B39B2030029959F /* CommentTableViewController.swift */,
-			);
-			name = OldFiles;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -298,11 +278,7 @@
 			files = (
 				0F584BD41B30673700C1FD47 /* ProjectTableViewController.swift in Sources */,
 				0F584BD91B307FDE00C1FD47 /* ProjectTableCell.swift in Sources */,
-				0F584BDF1B31AEE400C1FD47 /* VideoViewController.swift in Sources */,
-				0F0E022B1B2F3B9200D35686 /* ProjectViewController.swift in Sources */,
-				0F0E02291B2F1A2000D35686 /* ViewController.swift in Sources */,
 				0F0E02031B2DF3B500D35686 /* AuthViewController.swift in Sources */,
-				0FADB4CD1B39B2030029959F /* CommentTableViewController.swift in Sources */,
 				0FADB4D11B39D1060029959F /* Notification.swift in Sources */,
 				0F0E022D1B2F3CDA00D35686 /* Project.swift in Sources */,
 				0F584BDD1B30875900C1FD47 /* LectureListTableViewController.swift in Sources */,

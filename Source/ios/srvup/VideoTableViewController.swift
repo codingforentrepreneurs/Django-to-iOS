@@ -168,7 +168,7 @@ class VideoTableViewController: UITableViewController , UITextViewDelegate {
         case 1:
             if self.textArea.text != "" && self.textArea.text != self.textAreaPlaceholder {
                 self.textArea.endEditing(true)
-                self.lecture!.addComment(self.textArea.text, completion: addCommentCompletionHandler)
+                self.lecture!.addComment(self.textArea.text, parent:nil, completion: addCommentCompletionHandler)
                 self.textArea.text = self.textAreaPlaceholder
             } else {
                 self.message.text = "A comment is required."
