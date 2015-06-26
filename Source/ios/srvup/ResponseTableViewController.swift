@@ -72,7 +72,9 @@ class ResponseTableViewController: UITableViewController, UITextViewDelegate {
         
         let viaText = UITextView()
         viaText.frame = CGRectMake(0, commentText.frame.origin.y + commentText.frame.height, self.view.frame.width, 30)
-        viaText.text = "via \(self.commentUser!)"
+        if self.commentUser != nil {
+            viaText.text = "via \(self.commentUser!)"
+        }
         viaText.textAlignment = .Right
         viaText.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 10)
         viaText.editable = false
@@ -148,6 +150,7 @@ class ResponseTableViewController: UITableViewController, UITextViewDelegate {
         if textView.text == self.textAreaPlaceholder {
             textView.text = ""
         }
+        self.scrollToFooter(self)
     }
     
     func commentFormAction(sender: AnyObject) {
@@ -165,6 +168,7 @@ class ResponseTableViewController: UITableViewController, UITextViewDelegate {
         default:
             // println("cancelled")
             // self.commentView.removeFromSuperview()
+            self.textArea.endEditing(true)
             self.backToTop(self)
             
         }

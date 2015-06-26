@@ -104,6 +104,7 @@ class VideoTableViewController: UITableViewController , UITextViewDelegate {
         if textView.text == self.textAreaPlaceholder {
             textView.text = ""
         }
+        self.scrollToFooter(self)
     }
     
     func commentFormAction(sender: AnyObject) {
@@ -121,6 +122,7 @@ class VideoTableViewController: UITableViewController , UITextViewDelegate {
         default:
             // println("cancelled")
             // self.commentView.removeFromSuperview()
+            self.textArea.endEditing(true)
             self.backToTop(self)
             
         }
