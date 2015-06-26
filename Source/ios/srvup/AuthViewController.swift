@@ -67,8 +67,6 @@ class AuthViewController: UIViewController, UITextFieldDelegate {
         self.navigationController?.navigationBarHidden = true
         let image = UIImage(named: "pattern")
         let bgImage = UIColor(patternImage: image!)
-        // self.view.backgroundColor = bgImage
-        //rgba(0, 88, 128, 0.92)
         let bgView = UIView()
         bgView.frame = self.view.frame
         bgView.backgroundColor = bgImage

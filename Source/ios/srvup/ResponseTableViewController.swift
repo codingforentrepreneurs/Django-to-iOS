@@ -99,7 +99,12 @@ class ResponseTableViewController: UITableViewController, UITextViewDelegate {
         
         self.tableView.tableHeaderView = headerView
         
-        self.tableView.tableFooterView = self.addContactForm()
+        
+        
+        let commentForm = UICommentForm(parentViewController: self, textArea: self.textArea, textAreaPlaceholder: self.textAreaPlaceholder, textAreaDelegate:self, formAction: "commentFormAction:")
+        self.tableView.tableFooterView = commentForm
+        
+        
         
         
         
@@ -135,62 +140,7 @@ class ResponseTableViewController: UITableViewController, UITextViewDelegate {
         })
     }
     
-    func addContactForm() -> UIView {
-        let commentView = UITextView()
-        commentView.frame = CGRectMake(0, 0, self.view.frame.width, self.view.frame.height)
-        commentView.backgroundColor = .blackColor()
-        commentView.frame = CGRectMake(0, 0, self.view.frame.width, self.view.frame.height)
-        commentView.text = "Add New Comment"
-        commentView.textColor = .blackColor()
-        commentView.backgroundColor = .redColor()
-        commentView.textAlignment = .Center
-        commentView.font = UIFont.boldSystemFontOfSize(24)
-        
-        
-        let topOffset = CGFloat(25)
-        let xOffset = CGFloat(10)
-        let spacingE = CGFloat(10)
-        
-        // response message
-        self.message.editable = false
-        self.message.frame = CGRectMake(xOffset, topOffset, commentView.frame.width - (2 * xOffset), 30)
-        self.message.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.0)
-        self.message.textColor = .redColor()
-        
-        // title
-        let label = UILabel()
-        label.text = "Add new Comment"
-        label.frame = CGRectMake(xOffset, self.message.frame.origin.y + self.message.frame.height + spacingE, self.message.frame.width, 30)
-        label.textColor = .whiteColor()
-        
-        
-        // text area field
-        
-        self.textArea.editable = true
-        self.textArea.text = self.textAreaPlaceholder
-        self.textArea.delegate = self
-        self.textArea.frame = CGRectMake(xOffset, label.frame.origin.y + label.frame.height + spacingE, label.frame.width, 250)
-        // submit button
-        
-        let submitBtn = UIButton()
-        submitBtn.frame = CGRectMake(xOffset, self.textArea.frame.origin.y + self.textArea.frame.height + spacingE, self.textArea.frame.width, 30)
-        submitBtn.setTitle("Submit", forState: UIControlState.Normal)
-        submitBtn.addTarget(self, action: "commentFormAction:", forControlEvents: UIControlEvents.TouchUpInside)
-        submitBtn.tag = 1
-        
-        // cancel button
-        let cancelBtn = UIButton()
-        cancelBtn.frame = CGRectMake(xOffset, submitBtn.frame.origin.y + submitBtn.frame.height + spacingE, submitBtn.frame.width, 30)
-        cancelBtn.setTitle("Cancel", forState: UIControlState.Normal)
-        cancelBtn.addTarget(self, action: "commentFormAction:", forControlEvents: UIControlEvents.TouchUpInside)
-        cancelBtn.tag = 2
-        commentView.addSubview(label)
-        commentView.addSubview(self.message)
-        commentView.addSubview(self.textArea)
-        commentView.addSubview(submitBtn)
-        commentView.addSubview(cancelBtn)
-        return commentView
-    }
+
     
     
     func textViewDidBeginEditing(textView: UITextView) {
