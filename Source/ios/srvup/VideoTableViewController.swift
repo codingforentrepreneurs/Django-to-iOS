@@ -199,21 +199,25 @@ class VideoTableViewController: UITableViewController , UITextViewDelegate {
     }
     
     
-    func scrollToTop(completion:(success:Bool) -> Void){
-        self.tableView.scrollToRowAtIndexPath(NSIndexPath(forRow: 0, inSection: 0), atScrollPosition: UITableViewScrollPosition.Bottom, animated: true)
-        completion(success: true)
-    }
+
     
     func backToTop(sender:AnyObject) {
         self.scrollToTop { (success) -> Void in
         }
     }
     
+     // MARK: Scroll to Functions
+    
+    func scrollToTop(completion:(success:Bool) -> Void){
+        let point = CGPoint(x: 0, y: -10)
+        self.tableView.setContentOffset(point, animated: true)
+        completion(success: true)
+    }
+    
+    
     func scrollToFooter(sender:AnyObject) {
-        let lastRowItem = self.lecture!.commentSet.count - 1
-        let section = 0
-        self.tableView.scrollToRowAtIndexPath(NSIndexPath(forRow: lastRowItem, inSection: section), atScrollPosition: UITableViewScrollPosition.Top, animated: true)
-        
+        let point = CGPoint(x: 0, y: self.tableView.tableFooterView!.frame.origin.y)
+        self.tableView.setContentOffset(point, animated: true)
     }
     
     func popView(sender:AnyObject) {
