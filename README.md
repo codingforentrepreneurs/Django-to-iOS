@@ -14,8 +14,11 @@ We will continue to update the final code as it is needed. Below you will find t
 Enjoy!
 
 
-## Lecture Code
 
+
+## Lecture Code & Reference
+
+Getting Started Guide: [here](https://github.com/codingforentrepreneurs/Django-to-iOS/blob/master/Guides/Getting_Started.md)
 
 [4 - Implement Django](../../tree/b08e31255d4050c08eb72d5b6fa293a5d425a13e)
 
