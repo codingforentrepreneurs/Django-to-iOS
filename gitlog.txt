@@ -1,0 +1,455 @@
+commit ea7a7ba43113703409db786b87931eadc6bbccba
+Author: Justin Mitchel <jmitchel3@gmail.com>
+Date:   Fri Jun 26 08:03:32 2015 -0700
+
+    68-70 - Minor Code Changes
+
+commit b8e23f815dfcda82986bb180acedf789470c415a
+Author: Justin Mitchel <jmitchel3@gmail.com>
+Date:   Fri Jun 26 07:17:14 2015 -0700
+
+    67 - Comment Form Class
+
+commit 9b8119377b5df8c7f4815dd517f8c670a69eb760
+Author: Justin Mitchel <jmitchel3@gmail.com>
+Date:   Fri Jun 26 06:21:50 2015 -0700
+
+    66 - Update ScrollTo Functions
+
+commit fea91707bf80ecb5d8eaa3d87d2e61c01e681f93
+Author: Justin Mitchel <jmitchel3@gmail.com>
+Date:   Thu Jun 25 10:21:07 2015 -0700
+
+    65 - Auto Adjusting Response Header View
+
+commit d4910c4a5c8ecab190b68ef0b17e099107157775
+Author: Justin Mitchel <jmitchel3@gmail.com>
+Date:   Thu Jun 25 09:25:32 2015 -0700
+
+    64 - Insert Response Comment
+
+commit 5d2f31284e16cff6a190272d0f9ca955e7508568
+Author: Justin Mitchel <jmitchel3@gmail.com>
+Date:   Thu Jun 25 08:56:23 2015 -0700
+
+    63 - Response Table View Controller
+
+commit 1c2442d8bb219015c74ccdc6f69dcb71e7b5f8ad
+Author: Justin Mitchel <jmitchel3@gmail.com>
+Date:   Thu Jun 25 08:44:53 2015 -0700
+
+    62 - Parent ID for Adding Comments
+
+commit 758da085afccc930ae35b76b67eaceba914c2e51
+Author: Justin Mitchel <jmitchel3@gmail.com>
+Date:   Wed Jun 24 11:34:05 2015 -0700
+
+    61 - Lecture List Table Branding
+
+commit 2d3e87046cd4c5b8cd1ad63205900f9c938f0dc2
+Author: Justin Mitchel <jmitchel3@gmail.com>
+Date:   Wed Jun 24 11:28:03 2015 -0700
+
+    60 - Update Launch Screen
+
+commit 38e83eb0201977f5ff5cc2eef85e1cd2c29bb678
+Author: Justin Mitchel <jmitchel3@gmail.com>
+Date:   Wed Jun 24 11:21:42 2015 -0700
+
+    59 - Auth View Controller Updates
+
+commit 48bc438c497d2ec9a5b8b0cb9eb6e7ffad1f0c41
+Author: Justin Mitchel <jmitchel3@gmail.com>
+Date:   Wed Jun 24 10:47:03 2015 -0700
+
+    58 - Change Auth Messages to Notifications
+
+commit c4a4f8db59f0933085ed69f2a83eccfedbe6c77d
+Author: Justin Mitchel <jmitchel3@gmail.com>
+Date:   Wed Jun 24 10:32:01 2015 -0700
+
+    57 - Background Image with Pattern
+
+commit 97793adbe9faa485d42fbc29a723e3b64722208a
+Author: Justin Mitchel <jmitchel3@gmail.com>
+Date:   Wed Jun 24 07:22:52 2015 -0700
+
+    56 - Facebook Share Button
+
+commit 764dc72d7dce62f6733953f52b66464d1bfc7b85
+Author: Justin Mitchel <jmitchel3@gmail.com>
+Date:   Wed Jun 24 07:04:58 2015 -0700
+
+    55 - Project Description in Header View
+
+commit e3139ffcd6b576205842cf7025ff9d16d8570061
+Author: Justin Mitchel <jmitchel3@gmail.com>
+Date:   Wed Jun 24 06:41:48 2015 -0700
+
+    54 - Deselect Row before Segue
+
+commit 19963eacb5c226427ae3095a9769c6c3609f103d
+Author: Justin Mitchel <jmitchel3@gmail.com>
+Date:   Tue Jun 23 12:19:31 2015 -0700
+
+    53 - The Video Table View Controller
+
+commit 2227b2bec1f27465c2cb643697f936468c9ccfdb
+Author: Justin Mitchel <jmitchel3@gmail.com>
+Date:   Tue Jun 23 12:08:40 2015 -0700
+
+    52 - Add Video to Comment Table View
+
+commit a6a6a5e1ccb679cae20a9db6e4d55744fe2bb05a
+Author: Justin Mitchel <jmitchel3@gmail.com>
+Date:   Tue Jun 23 11:45:09 2015 -0700
+
+    51 - Pull to Refresh Data with UIRefreshControll
+
+commit 56eb92e15ec195f9361b0842d101c1536799e527
+Author: Justin Mitchel <jmitchel3@gmail.com>
+Date:   Tue Jun 23 11:18:55 2015 -0700
+
+    50 - Comment Form in Footer
+
+commit a0741e1eef968cd89a422493965622bfbba8455a
+Author: Justin Mitchel <jmitchel3@gmail.com>
+Date:   Tue Jun 23 11:03:53 2015 -0700
+
+    49 - Update Comment Adding
+
+commit 86ec55179f930a73b79ab912ea6133da2c4cdaf1
+Author: Justin Mitchel <jmitchel3@gmail.com>
+Date:   Tue Jun 23 10:55:32 2015 -0700
+
+    48 - Notification Class
+
+commit 6bf80a6948d5efbd76acb4aa7109ee195524643d
+Author: Justin Mitchel <jmitchel3@gmail.com>
+Date:   Tue Jun 23 09:11:09 2015 -0700
+
+    47 - Scroll to FooterView
+
+commit ae76d33c5a7d4127cae5e7999ea59ee0149ae8dd
+Author: Justin Mitchel <jmitchel3@gmail.com>
+Date:   Tue Jun 23 08:55:24 2015 -0700
+
+    46 - Cell Height based on Cell Text
+
+commit 38fb0af9f7ce75d8f320fbeb604b417a2afc8378
+Author: Justin Mitchel <jmitchel3@gmail.com>
+Date:   Tue Jun 23 08:39:21 2015 -0700
+
+    45 - Comments Table View Controller
+
+commit 84ff9436dafa3b471e55f00cfc9a7602df9b816d
+Author: Justin Mitchel <jmitchel3@gmail.com>
+Date:   Mon Jun 22 10:28:43 2015 -0700
+
+    44 - Animate Noifcations
+
+commit 0aa914fe6cdcd894335b33bddbd5a1b6422abded
+Author: Justin Mitchel <jmitchel3@gmail.com>
+Date:   Mon Jun 22 10:18:34 2015 -0700
+
+    43 - Trigger Noification & Time Delay
+
+commit f4d09dce6ee743d88634e66a1c9186c52603fac9
+Author: Justin Mitchel <jmitchel3@gmail.com>
+Date:   Mon Jun 22 09:50:51 2015 -0700
+
+    42 - Handling Comment Failure
+
+commit d739bc61f1222f08c800824fa7a06dbf0f698809
+Author: Justin Mitchel <jmitchel3@gmail.com>
+Date:   Mon Jun 22 09:37:44 2015 -0700
+
+    41 - Comment Completion Handler Part 2
+
+commit 32d0c9e933cb4a907d191506aa8890fc07c3da58
+Author: Justin Mitchel <jmitchel3@gmail.com>
+Date:   Fri Jun 19 10:02:41 2015 -0700
+
+    40 - Completion Handler for Successful Comment Creation
+
+commit e016d2890c084b740b3f395e7e6bee10fafff5d2
+Author: Justin Mitchel <jmitchel3@gmail.com>
+Date:   Fri Jun 19 09:51:52 2015 -0700
+
+    39 - Save New Comment on the Server
+
+commit 32b30ae71240e043dd45139394ee2355b66daa65
+Author: Justin Mitchel <jmitchel3@gmail.com>
+Date:   Fri Jun 19 09:34:26 2015 -0700
+
+    38 - Another Token Auth Request with Alamofire
+
+commit 2354587f3f3b06959ab0d9f45e2f8e99eb891e89
+Author: Justin Mitchel <jmitchel3@gmail.com>
+Date:   Fri Jun 19 08:14:45 2015 -0700
+
+    37 - UI Functionality to Comment Form
+
+commit 61cdc18a5e4b84c7da1917e0003563fa965b39ce
+Author: Justin Mitchel <jmitchel3@gmail.com>
+Date:   Fri Jun 19 08:03:38 2015 -0700
+
+    New Comment Form
+
+commit 92513be5916e703b980c903f4d00c12d1a7ad128
+Author: Justin Mitchel <jmitchel3@gmail.com>
+Date:   Thu Jun 18 11:43:28 2015 -0700
+
+    35 - Check Token or Logout User
+
+commit 1655dd498f44af9f7a36f21f4d2a4d6ea17fb316
+Author: Justin Mitchel <jmitchel3@gmail.com>
+Date:   Thu Jun 18 11:04:17 2015 -0700
+
+    34 - UI Navigation Controller
+
+commit 8d90c05d15aeb2ebb60661c2b47154820d46a19c
+Author: Justin Mitchel <jmitchel3@gmail.com>
+Date:   Thu Jun 18 08:18:52 2015 -0700
+
+    33 - Add Functionality to UI Nav Buttons
+
+commit 736d472cfb4281fc86663438bd0977dc5ac66d8d
+Author: Justin Mitchel <jmitchel3@gmail.com>
+Date:   Thu Jun 18 07:58:39 2015 -0700
+
+    32 - UINavButton Direction
+
+commit b8c82cac66aed4e350525fbfc90a27dbc7413519
+Author: Justin Mitchel <jmitchel3@gmail.com>
+Date:   Thu Jun 18 07:52:21 2015 -0700
+
+    31 - Custom UI Nav Button
+
+commit b2fede449633f9f3b8cb0ef62a5011fb6857314e
+Author: Justin Mitchel <jmitchel3@gmail.com>
+Date:   Wed Jun 17 07:39:59 2015 -0700
+
+    30 - Auto Login with Token
+
+commit e3c7c3d50041573ceb11da6efd7b542bad8a06d1
+Author: Justin Mitchel <jmitchel3@gmail.com>
+Date:   Wed Jun 17 07:15:20 2015 -0700
+
+    29 - UI Web View
+
+commit 39592992bc502e1a38df909f8feefb0db9c30d25
+Author: Justin Mitchel <jmitchel3@gmail.com>
+Date:   Wed Jun 17 06:40:39 2015 -0700
+
+    28 - Video View Controller
+
+commit 55b6b57d675e7ea5119a168a1a2712e480977dbf
+Author: Justin Mitchel <jmitchel3@gmail.com>
+Date:   Tue Jun 16 10:05:11 2015 -0700
+
+    27 - Table Header View
+
+commit 11e9cd88fecb11d80d2f3f65750b1b2ce3e4ef33
+Author: Justin Mitchel <jmitchel3@gmail.com>
+Date:   Tue Jun 16 09:52:58 2015 -0700
+
+    26 - UI Alert View
+
+commit 88fd4131b2b169f26782881c9d96db38ec1aefb9
+Author: Justin Mitchel <jmitchel3@gmail.com>
+Date:   Tue Jun 16 09:42:48 2015 -0700
+
+    25 - Lecture List Table VC
+
+commit c239b7736ea842f84976c6ce79505dfa484d2040
+Author: Justin Mitchel <jmitchel3@gmail.com>
+Date:   Tue Jun 16 09:14:49 2015 -0700
+
+    24 - Custom Tables Cells for Images and Text
+
+commit be3314f7fe45591556285382ee79ffdfbd9b223f
+Author: Justin Mitchel <jmitchel3@gmail.com>
+Date:   Tue Jun 16 08:01:17 2015 -0700
+
+    23 - Create Lectures Method
+
+commit 9038a72207add228b703bd362ebd7a0046c40cdb
+Author: Justin Mitchel <jmitchel3@gmail.com>
+Date:   Tue Jun 16 07:52:12 2015 -0700
+
+    22 - Lecture Model
+
+commit a7ba3dde63fdbe3da9f73328382890f2fc7be3a0
+Author: Justin Mitchel <jmitchel3@gmail.com>
+Date:   Tue Jun 16 07:35:39 2015 -0700
+
+    21 - Video Set
+
+commit cc7751d7d2afe23f1bc3fa5000a2d71a55139dcc
+Author: Justin Mitchel <jmitchel3@gmail.com>
+Date:   Tue Jun 16 07:25:25 2015 -0700
+
+    20 - UI Table View Controller
+
+commit c99397e4207701f942f6d1bd20d47551d59748ae
+Author: Justin Mitchel <jmitchel3@gmail.com>
+Date:   Tue Jun 16 07:13:35 2015 -0700
+
+    19 - UITableView in a View Controller
+
+commit 00eecd223caad227ebfaaaa2712b838ce799c733
+Author: Justin Mitchel <jmitchel3@gmail.com>
+Date:   Mon Jun 15 10:30:25 2015 -0700
+
+    18 - Prepare for Segue
+
+commit 5ff7ec5ded5ea6f1f76f5aceaba1d84870ae5511
+Author: Justin Mitchel <jmitchel3@gmail.com>
+Date:   Mon Jun 15 10:23:09 2015 -0700
+
+    17 - Results as Project Instances
+
+commit 29034c22e2ffdef742223db6af9c40aa00529fa1
+Author: Justin Mitchel <jmitchel3@gmail.com>
+Date:   Mon Jun 15 10:16:53 2015 -0700
+
+    16 - Project Model
+
+commit 478176e4c5f32d37a9266e60ffa576a78511307b
+Author: Justin Mitchel <jmitchel3@gmail.com>
+Date:   Mon Jun 15 10:01:51 2015 -0700
+
+    15 - Perfom Segue
+
+commit a399e8ec2ed70517c6f6ea20db5b3efe8e60030e
+Author: Justin Mitchel <jmitchel3@gmail.com>
+Date:   Mon Jun 15 09:56:09 2015 -0700
+
+    14 - Improve Form UI
+
+commit d2c905e5e68cdfb931219ddc4bb5e29e0dc24b9f
+Author: Justin Mitchel <jmitchel3@gmail.com>
+Date:   Mon Jun 15 09:28:25 2015 -0700
+
+    13 - Validate Login Form
+
+commit e9b67db31492cfe9b3695824754427169bf2a347
+Author: Justin Mitchel <jmitchel3@gmail.com>
+Date:   Mon Jun 15 09:21:16 2015 -0700
+
+    12 - UI Text Fields And A Button
+
+commit a9c2ad658c4009b17433015dbfb4202173078179
+Author: Justin Mitchel <jmitchel3@gmail.com>
+Date:   Mon Jun 15 09:02:21 2015 -0700
+
+    11 - Auth Methods
+
+commit 5d9be63eb6e44d989df3800999045d7c1910e898
+Author: Justin Mitchel <jmitchel3@gmail.com>
+Date:   Mon Jun 15 07:47:39 2015 -0700
+
+    10 - Completion Handlers
+
+commit d88bd5a9eca12a048b9dd636b7961ef7132887a7
+Author: Justin Mitchel <jmitchel3@gmail.com>
+Date:   Mon Jun 15 07:33:13 2015 -0700
+
+    9 - Using an Auth Header with Alamofire
+
+commit 1bab11e88fba027ae84325a6ab59dd5a06638d2a
+Author: Justin Mitchel <jmitchel3@gmail.com>
+Date:   Mon Jun 15 07:17:04 2015 -0700
+
+    8 - KeychainAccess
+
+commit 79cb36858afbdf82fe6908ef1e096440185bccb8
+Author: Justin Mitchel <jmitchel3@gmail.com>
+Date:   Mon Jun 15 07:04:31 2015 -0700
+
+    7 - SwiftyJSON
+
+commit d24b9a4b26242223b21123f97c5829733dae7433
+Author: Justin Mitchel <jmitchel3@gmail.com>
+Date:   Mon Jun 15 06:58:16 2015 -0700
+
+    Status Code Switch Statement
+
+commit 95bd79655371e29575c5f0a1c627c49566fed55a
+Author: Justin Mitchel <jmitchel3@gmail.com>
+Date:   Mon Jun 15 06:44:30 2015 -0700
+
+    5 - Authentication
+
+commit b08e31255d4050c08eb72d5b6fa293a5d425a13e
+Author: Justin Mitchel <jmitchel3@gmail.com>
+Date:   Sun Jun 14 12:07:17 2015 -0700
+
+    Implement Django
+
+commit c68761d23010a2d502bc2f9e719e19cb76a870b0
+Author: Justin Mitchel <jmitchel3@gmail.com>
+Date:   Sun Jun 14 11:46:17 2015 -0700
+
+    Update Getting Started Guide
+
+commit 9258cfd7882df9a4b5bbfa1dc4425a5982cab6f7
+Author: Justin Mitchel <jmitchel3@gmail.com>
+Date:   Sun Jun 14 11:45:25 2015 -0700
+
+    Update Getting Started Guide
+
+commit 0a35aa1d030c465726faabeb9b9b691f90cc99a9
+Author: Justin Mitchel <jmitchel3@gmail.com>
+Date:   Sun Jun 14 11:44:10 2015 -0700
+
+    Update Getting Started Guide
+
+commit 2ffd99c8da63c7cfb000aec34cf62e1b3ac33353
+Author: Justin Mitchel <jmitchel3@gmail.com>
+Date:   Sun Jun 14 11:09:12 2015 -0700
+
+    Getting Started - iOS
+
+commit 43ed391c7bb94233a2cfe07f5dfb79c0b37440a9
+Author: Justin Mitchel <jmitchel3@gmail.com>
+Date:   Sun Jun 14 10:29:54 2015 -0700
+
+    Update topics
+
+commit 9ece38a8760c950daae5f3d910047a4bc44343fd
+Author: Justin Mitchel <jmitchel3@gmail.com>
+Date:   Sun Jun 14 10:19:17 2015 -0700
+
+    Update Getting Started
+
+commit 0d51c71ac8a1a9a3e636b38941841321b51f12bc
+Author: Justin Mitchel <jmitchel3@gmail.com>
+Date:   Sun Jun 14 09:46:13 2015 -0700
+
+    Update guides
+
+commit 0707ad05d5106ba75ceb7360731e58ca0f820301
+Author: Justin Mitchel <jmitchel3@gmail.com>
+Date:   Sun Jun 14 09:44:50 2015 -0700
+
+    Update Topics
+
+commit f791f19ac7c4ad61a94452cf45dc28626a979f36
+Author: Justin Mitchel <jmitchel3@gmail.com>
+Date:   Sun Jun 14 09:38:01 2015 -0700
+
+    Update Topics
+
+commit 22fc5c1f4377260edb89c95842e4c2a92be0039a
+Author: Justin Mitchel <jmitchel3@gmail.com>
+Date:   Sun Jun 14 09:36:37 2015 -0700
+
+    Initial Commit
+
+commit 2241f0fb1bf21da3f37446c9a0d1d724119bbc2c
+Author: Coding For Entrepreneurs <codingforentrepreneurs@gmail.com>
+Date:   Sun Jun 14 09:34:58 2015 -0700
+
+    Initial commit

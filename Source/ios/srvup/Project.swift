@@ -137,6 +137,9 @@ class Lecture: NSObject {
                 let statusCode = response?.statusCode
                 
                 // 201
+                println(response)
+                println(data)
+                println(error)
                 if (200 ... 299 ~= statusCode!) && (data != nil) {
                     let jsonData = JSON(data!)
                     self.commentSet.insert(jsonData, atIndex: 0)
