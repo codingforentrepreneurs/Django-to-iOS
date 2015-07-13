@@ -4,6 +4,7 @@
 - [Mac OS X](http://www.apple.com/osx/)
 - [Xcode](https://developer.apple.com/xcode/) version 6+
 - Carthage Installed. [Installation Guide](https://github.com/codingforentrepreneurs/Guides/blob/master/install_carthage.md)
+	- Carthage Errors? Try using Cocoapods. [Installation Guide](https://github.com/codingforentrepreneurs/Guides/blob/master/install_cocoapods.md)
 - Django & Virtualenv Installed.
 	- CFE [Video Tutorial](http://joincfe.com/projects/#setup)
 	- CFE Github [Installation Guide](https://github.com/codingforentrepreneurs/Guides/blob/master/install_django_mac_linux.md)
